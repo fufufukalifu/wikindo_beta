@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"         
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .art {
+                width: 500px;
+                margin:  0 auto;
+            }
+            
+            
+            #art2 {
+                float: right;
+                position: absolute;
+                right: 210px;
+                margin-top: 20px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        
+        <p:layout fullPage="true" style="min-width:400px;min-height:200px;">
+            
+             <p:layoutUnit position="north" size="100" minSize="40" maxSize="200">
+                 <p:outputLabel value="Ini Halaman Redaksi"/>
+                 <br/><br/>
+                 <p:button outcome="index" value="Kontributor"/>
+            </p:layoutUnit>
+            <p:layoutUnit position="west" resizable="true" size="200" minSize="40" maxSize="200">
+                West
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">                
+                <p:panelGrid columns="2" class="art">                  
+                    <p:link>Artikel 1 aa aa k aka ka ka a ka ka a aka k</p:link>
+                    <p:selectBooleanCheckbox/>
+                    <p:link value="Artikel 2"/>
+                    <p:selectBooleanCheckbox/>
+                    <p:link value="Artikel 3"/>
+                    <p:selectBooleanCheckbox/>
+                    <p:link value="Artikel 4"/>
+                    <p:selectBooleanCheckbox/>
+                    <p:link>Artikel 1</p:link>
+                    <p:selectBooleanCheckbox/>
+                    <p:link value="Artikel 2"/>
+                    <p:selectBooleanCheckbox/>
+                    <p:link value="Artikel 3"/>
+                    <p:selectBooleanCheckbox/>
+                    <p:link value="Artikel 4"/>
+                    <p:selectBooleanCheckbox/> 
+                </p:panelGrid>
+              
+                <div id="art2">
+                <p:button value="Approve"/>
+                </div>
+            </p:layoutUnit>
+            
+            <p:layoutUnit position="east" resizable="true" size="100" minSize="40" maxSize="200">
+                east
+            </p:layoutUnit>
+             <p:layoutUnit position="south" resizable="true" size="50" minSize="40" maxSize="200">
+                footer
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+

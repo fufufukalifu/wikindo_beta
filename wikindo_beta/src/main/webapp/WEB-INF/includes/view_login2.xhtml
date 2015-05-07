@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <div class="container">
+
+            <div class="row" id="pwd-container">
+                <div class="col-md-4"></div>
+
+                <div class="col-md-4">
+                    <section class="login-form">
+                        <form role="login" style="background: black">
+                            <img src="../../resources/images/logo.png" class="img-responsive" alt="" />
+                            <h:inputText class="form-control input-lg" value="#{loginBean.uname}" title="username"/>
+                            <h:inputSecret class="form-control input-lg" value="#{loginBean.password}" title="password"/>
+
+                            <div class="pwstrength_viewport_progress"></div>
+                            <h:form>
+                                <p:commandButton id="button" value="Sign In" action="#{loginBean.loginProject()}" ajax="true" class="btn-block btn-success"/> 
+                            </h:form>
+
+
+                            <div>
+                                <a href="#">Membuat Akun</a> or
+                                <a href="#">Reset Password</a>
+                            </div>
+
+                        </form>
+
+                        <div class="form-links">
+
+                        </div>
+                    </section>  
+                </div>
+            </div> 
+        </div>
+    </h:body>
+</html>
+

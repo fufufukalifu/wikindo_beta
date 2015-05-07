@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Form Besic Information</title>
+    </h:head>
+    <h:body>
+        <h:form>
+
+            <p:growl id="growl" sticky="true" showDetail="true"/>
+
+            <p:wizard flowListener="#{controllerBasicInfo.onFlowProcess}">
+
+                <p:tab id="Data_tokoh" title="Data Tokoh">
+                    <p:panel header="Personal Details">
+                        <p:messages />
+                        <!--Inputan untuk tabel Informasi-->
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="id besic information: *"/>
+                            <p:inputText value="#{controllerBasicInfo.basicInformation.idBasicInfo}" required="true"/>
+
+                            <h:outputText value="Nama Tokoh: *"/>
+                            <p:inputText value="#{controllerBasicInfo.basicInformation.namaTokoh}" required="true"/>
+
+                            <h:outputText value="Tempat Lahir: "/>
+                            <p:inputText value="#{controllerBasicInfo.basicInformation.tempatLahir}"/>
+
+                            <h:outputText value="Tanggal Lahir: "/>
+                            <p:calendar value="#{controllerBasicInfo.basicInformation.tanggalLahir}" pattern="yyyy-dd-MM" effect="fold"/>
+
+                            <h:outputText value="Tanggal Meninggal:"/>
+                            <p:calendar value="#{controllerBasicInfo.basicInformation.tanggalMeninggal}" pattern="yyyy-dd-MM" effect="fold"/>
+
+                            <h:outputText value="Agama: "/>
+                            <p:selectOneMenu value="#{controllerBasicInfo.basicInformation.agama}">
+                                <f:selectItem itemValue="Islam" itemLabel="Islam"/>
+                                <f:selectItem itemValue="Budha" itemLabel="Budha"/>
+                                <f:selectItem itemValue="dll" itemLabel="Dan Lain-lain"/>
+                            </p:selectOneMenu> 
+
+                            <h:outputText value="Skip to last: " />
+                            <h:selectBooleanCheckbox value="#{controllerBasicInfo.skip}" />
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                <!--tab data pendidikan-->
+                <p:tab id="pendidikan" title="Pendidikan">
+                    <p:panel header="Personal Details">
+                        <p:messages />
+                        <!--Inputan untuk tabel Pendidikan-->
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="Id Pendidikan: "/>
+                            <p:inputText value="#{controllerBasicInfo.pendidikan.idPendidikan}"/>
+
+                            <h:outputText value="Jenjang Pendidikan: "/>
+                            <p:selectOneMenu value="#{controllerBasicInfo.pendidikan.jenjangPendidikan}">
+                                <f:selectItem itemValue="SD" itemLabel="SD"/>
+                                <f:selectItem itemValue="SMP" itemLabel="SMP"/>
+                                <f:selectItem itemValue="SMA" itemLabel="SMA"/>
+                                <f:selectItem itemValue="Perguruan Tinggi" itemLabel="Perguruan Tinggi"/>
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value="Nama Sekolah"/>
+                            <p:inputText value="#{controllerBasicInfo.pendidikan.namaSekolah}" />
+
+                            <h:outputLabel value="Alamat Sekolah"/>
+                            <p:inputText value="#{controllerBasicInfo.pendidikan.alamatSekolah}"/>
+
+
+                            <h:outputText value="Skip to last: " />
+                            <h:selectBooleanCheckbox value="#{controllerBasicInfo.skip}" />
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+
+                <p:tab id="gela" title="Gelar">
+                    <p:panel header="Personal Details">
+                        <p:messages />
+                        <!--Inputan untuk tabel Gelar yang diraih-->
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="Id gelar: "/>
+                            <p:inputText value="#{controllerBasicInfo.gelar.idGelar}"/>
+
+                            <h:outputText value="Nama Gelar: "/>
+                            <p:inputText value="#{controllerBasicInfo.gelar.namaGelar}"/>
+
+                            <h:outputText value="Tahun Diraih: "/>
+                            <p:calendar value="#{controllerBasicInfo.gelar.tahunDiraihnya}" pattern="yyyy-dd-MM" effect="fold"/>
+
+                            <h:outputText value="Singkatan Gelar: "/>
+                            <p:inputText value="#{controllerBasicInfo.gelar.singkatanGelar}"/>
+
+                            <h:outputText value="Skip to last: " />
+                            <h:selectBooleanCheckbox value="#{controllerBasicInfo.skip}" />
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                <p:tab id="pengalaman_kerja" title="Pengalaman Kerja">
+                    <p:panel header="Personal Details">
+                        <p:messages />
+                        <!--Inputan untuk tabel Pengalaman Kerja-->
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="Id Pengalaman Kerja: "/>
+                            <p:inputText value="#{controllerBasicInfo.pengalamanKerja.idPengalamanKerja}"/>
+
+                            <h:outputText value="Jabatan: "/>
+                            <p:inputText value="#{controllerBasicInfo.pengalamanKerja.jabatan}"/>
+
+                            <h:outputText value="Diangkat Oleh: "/>
+                            <p:inputText value="#{controllerBasicInfo.pengalamanKerja.diangkatOleh}"/>
+
+                            <h:outputText value="Menggantikan: "/>
+                            <p:inputText value="#{controllerBasicInfo.pengalamanKerja.menggantikan}"/>
+
+                            <h:outputText value="Tahun Menjabat: "/>
+                            <p:calendar value="#{controllerBasicInfo.pengalamanKerja.tahunMenjabat}" pattern="yyyy-dd-MM" effect="fold"/>
+
+                            <h:outputText value="Tahun Berhenti: "/>
+                            <p:calendar value="#{controllerBasicInfo.pengalamanKerja.tahunBerhenti}" pattern="yyyy-dd-MM" effect="fold"/>
+
+
+
+                            <h:outputText value="Skip to last: " />
+                            <h:selectBooleanCheckbox value="#{controllerBasicInfo.skip}" />
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                <p:tab id="penghargaan" title="Penghargaan">
+                    <p:panel header="Personal Details">
+                        <p:messages />
+                        <!--Inputan untuk tabel Penghargaan-->
+                        <!--data tidak sama dengan database-->
+                        <h:panelGrid columns="2" columnClasses="label, value">  
+                            <h:outputText value="Id Penghargaan: "/>
+                            <p:inputText value="#{controllerBasicInfo.penghargaan.idPenghargaan}"/>
+
+                            <h:outputText value="Nama Penghargaan: "/>
+                            <p:inputText value="#{controllerBasicInfo.penghargaan.namaPenghargaan}"/>
+
+                            <h:outputText value="Keterangan: "/>
+                            <p:inputTextarea value="#{controllerBasicInfo.penghargaan.keteranganPenghargaan}"/>
+
+
+                            <h:outputText value="Skip to last: " />
+                            <h:selectBooleanCheckbox value="#{controllerBasicInfo.skip}" />
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+
+                <p:tab id="confirm" title="Konfirmasi">
+                    <p:panel header="Personal Details">
+                        <p:messages />
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="id besic information: *"/>
+                            <h:outputText value="#{controllerBasicInfo.basicInformation.idBasicInfo}"/>
+
+                            <h:outputText value="Nama Tokoh: *"/>
+                            <h:outputText value="#{controllerBasicInfo.basicInformation.namaTokoh}"/>
+
+                            <h:outputText value="Tempat Lahir: "/>
+                            <h:outputText value="#{controllerBasicInfo.basicInformation.tempatLahir}"/>
+
+                            <h:outputText value="Tanggal Lahir: "/>
+                            <h:outputText value="#{controllerBasicInfo.basicInformation.tanggalLahir}" />
+
+                            <h:outputText value="Tanggal Meninggal:"/>
+                            <h:outputText value="#{controllerBasicInfo.basicInformation.tanggalMeninggal}"/>
+
+                            <h:outputText value="Agama: "/>
+                            <h:outputText value="#{controllerBasicInfo.basicInformation.agama}"/>
+                        </h:panelGrid>  
+                        
+                        <p:commandButton value="Submit" actionListener="#{controllerBasicInfo.saveFormBasicInfo}" update="growl" process="@this"/>
+
+                    </p:panel>
+                </p:tab>
+            </p:wizard>
+
+        </h:form>
+    </h:body>
+</html>

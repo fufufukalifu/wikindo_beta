@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+          
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+         <!--<ui:include src="../../WEB-INF/includes/load_css.xhtml"/>-->
+    </h:head>
+    <h:body>
+       
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north"  size="100" minSize="40" maxSize="200">
+                <ui:include src="../../WEB-INF/includes/view_header.xhtml"/>
+            </p:layoutUnit>
+            <p:layoutUnit position="west"  size="200" minSize="40" maxSize="200">
+                <ui:include src="../../WEB-INF/includes/view_sidebar_kontributor.xhtml"/>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:include src="../../WEB-INF/includes/view_create_article.xhtml"/>
+
+            </p:layoutUnit>
+            <p:layoutUnit position="east"  size="500" minSize="250" maxSize="550">
+                <ui:include src="../../WEB-INF/includes/crosel_basic_info.xhtml" />
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south"  size="50" minSize="40" maxSize="200">
+                Footer
+            </p:layoutUnit>
+
+        </p:layout>
+    </h:body>
+</html>
+

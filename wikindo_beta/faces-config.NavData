@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="pages/login/test.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="pages/profile/index.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="pages/form_kontributor/index.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="pages/my_article/index.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="pages/login/index.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="pages/create_article/index.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="pages/edit_article/EditArticle.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="pages/approve_kotributor/index.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="pages/approve_article/approve.article.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="pages/dashboard/index.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="Content/Login/Login_1.xhtml" x="150" y="600" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:carousel value="#{controllerArticle.getBasicInformation()}" headerText="Besick Info" var="bInfo" itemStyleClass="infoItem" numVisible="1" easing="easeOutBounce" styleClass="carouselAdvanced">
+
+                <p:panelGrid columns="2" style="width:100%" columnClasses="label,value">
+
+                    <f:facet name="header">
+                        <h:outputText value="header"/>
+                    </f:facet>
+                    <h:outputText value="Id:" />
+                    <h:outputText value="#{bInfo.idBasicInfo}" />
+
+                    <h:outputText value="Nama Tokoh" />
+                    <h:outputText value="#{bInfo.namaTokoh}" />
+
+                    <h:outputText value="Color:" />
+                    <h:outputText value="#{bInfo.tempatLahir}"/>
+                    <f:facet name="footer">
+                        <p:commandButton update="display" oncomplete="PF('dlg').show()" icon="ui-icon-disk">
+                            <f:setPropertyActionListener value="#{bInfo}" target="#{controllerArticle.basicInfo}" />
+                        </p:commandButton>
+                    </f:facet>
+                    <p:dialog rendered="#{not empty controllerArticle.basicInfo}" header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade">
+                        <h:outputText id="display" value="#{controllerArticle.basicInfo.namaTokoh}" escape="false" />
+                    </p:dialog>
+                </p:panelGrid>
+            </p:carousel> 
+
+        </h:form>
+
+    </h:body>
+</html>
+
