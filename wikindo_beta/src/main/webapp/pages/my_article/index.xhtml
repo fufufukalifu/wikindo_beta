@@ -5,17 +5,14 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Wikindo | My Article</title>
     </h:head>
 
 
-    <h:body>
-
-
-        <p:layout fullPage="true">
-            <p:layoutUnit position="north"  size="100" minSize="40" maxSize="200">
-                luhur
-            </p:layoutUnit>
+    <h:body class="metro" style="background-color: white" id="top">
+        <ui:include src="../../WEB-INF/includes/view_header.xhtml"/>
+        <ui:include src="../../WEB-INF/includes/load_css.xhtml"/>
+        <p:layout>
 
             <p:layoutUnit position="west"  size="200" minSize="40" maxSize="200">
                 <ui:include src="../../WEB-INF/includes/view_sidebar_kontributor.xhtml"/>
@@ -23,11 +20,6 @@
 
             <p:layoutUnit position="center">
                 <ui:include src="../../WEB-INF/includes/view_myArticle.xhtml"/>
-            </p:layoutUnit>
-
-
-            <p:layoutUnit position="south"  size="50" minSize="40" maxSize="200">
-                Footer
             </p:layoutUnit>
 
         </p:layout>

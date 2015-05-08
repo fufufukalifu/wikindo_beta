@@ -139,17 +139,35 @@ public class ControllerArticle implements Serializable {
         return listBasicInfo;
     }
 
-    public void delete() throws SQLException {
-        Connection con = KoneksiPostgre.getConnection();
-
-        PreparedStatement stat;
-
-        stat = con.prepareStatement(
-                "DELETE FROM `article` WHERE `article`.`id_article` = ?");
-        //? di lokasikan ke 1, 2 , 3
-        stat.setString(1, "12wa");
-        stat.executeUpdate();
-
-    }
+    public void delete(String idArticle) throws SQLException {
+      Connection con = KoneksiPostgre.getConnection();
+       
+                try {
+            PreparedStatement preparedStatement = con
+                    .prepareStatement("delete from article where id_article=?");
+            // Parameters start with 1
+            preparedStatement.setString(1, idArticle);
+            preparedStatement.executeUpdate();
+                  addMessage("Success", "Success");
+                  
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+ }
+ 
+    public void edit() throws SQLException {
+     Connection con = KoneksiPostgre.getConnection();
+           addMessage("System Error", "Please try again later.");
+           try {
+               PreparedStatement ps = null;
+     String query = "UPDATE article SET  judul_article=?, isi_article=? where id_article=?";
+     System.out.println("Masuk Edit");
+     ps.executeUpdate();
+     System.out.println("Edit");
+     } catch (SQLException e) {
+               System.out.println("Gagal");
+            e.printStackTrace();
+        }
+ }
 
 }
