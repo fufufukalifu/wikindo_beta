@@ -47,8 +47,6 @@ public class ControllerArticle implements Serializable {
         this.article = article;
     }
 
-  
-
     public void simpan() throws SQLException {
 
         Connection con = KoneksiPostgre.getConnection();
@@ -98,7 +96,29 @@ public class ControllerArticle implements Serializable {
         return listArticle;
     }
     
-      public List<BasicInformation> getBasicInformation() throws SQLException {
+    
+    public List<Article> getInfoArticleSingle() throws SQLException {
+        Connection con = KoneksiPostgre.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        List<Article> listArticle;
+        String sql = "select * from article order by tanggal_dibuat desc limit 1";
+        pst = con.prepareStatement(sql);
+        rs = pst.executeQuery();
+        listArticle = new ArrayList<>();
+        while (rs.next()) {
+            Article article = new Article();
+            article.setIdArticle(rs.getString("id_basic_information"));
+            article.setJudulArticle(rs.getString("judul_article"));
+            article.setIsiArticle(rs.getString("isi_article"));
+            article.setCaption(rs.getString("caption"));
+
+            listArticle.add(article);
+        }
+        return listArticle;
+    }
+
+    public List<BasicInformation> getBasicInformation() throws SQLException {
         Connection con = KoneksiPostgre.getConnection();
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -109,7 +129,7 @@ public class ControllerArticle implements Serializable {
         listBasicInfo = new ArrayList<>();
 
         while (rs.next()) {
-           BasicInformation basicInfo = new BasicInformation();
+            BasicInformation basicInfo = new BasicInformation();
             basicInfo.setIdBasicInfo(rs.getString("id_basic_information"));
             basicInfo.setNamaTokoh(rs.getString("nama_tokoh"));
             basicInfo.setTempatLahir(rs.getString("tempat_lahir"));

@@ -6,6 +6,7 @@
 package com.zeroonething.wikindo.Conntroller;
 
 import com.zeroonething.wikindo.Koneksi.KoneksiPostgre;
+import com.zeroonething.wikindo.Model.Article;
 import com.zeroonething.wikindo.Model.BasicInformation;
 import com.zeroonething.wikindo.Model.Gelar;
 import com.zeroonething.wikindo.Model.Pendidikan;
@@ -14,7 +15,10 @@ import com.zeroonething.wikindo.Model.Penghargaan;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -34,7 +38,7 @@ public class ControllerBasicInfo implements Serializable {
     private Pendidikan pendidikan = new Pendidikan();
     private PengalamanKerja pengalamanKerja = new PengalamanKerja();
     private Penghargaan penghargaan = new Penghargaan();
-    
+
     private boolean skip;
 
     public BasicInformation getBasicInformation() {
@@ -93,7 +97,7 @@ public class ControllerBasicInfo implements Serializable {
         stat.setString(8, basicInformation.getAgama());
         stat.executeUpdate();
         stat.close();
-        
+
         //fingsi insert ke tabel pendidikan
         stat = con.prepareStatement(
                 "Insert into pendidikan values (?,?,?,?,?,?)");
@@ -105,7 +109,7 @@ public class ControllerBasicInfo implements Serializable {
         stat.setString(6, "0");
         stat.executeUpdate();
         stat.close();
-        
+
         //fungsi insert ke tabel gelar
         stat = con.prepareStatement(
                 "Insert into gelar values(?,?,?,?,?,?)");
@@ -118,7 +122,7 @@ public class ControllerBasicInfo implements Serializable {
         stat.setString(6, "0");
         stat.executeUpdate();
         stat.close();
-        
+
         //fungsi insert ke tabel pengalaman kerja
         stat = con.prepareStatement(
                 "Insert into pengalaman_kerja values (?,?,?,?,?,?,?,?)");
@@ -132,21 +136,42 @@ public class ControllerBasicInfo implements Serializable {
         stat.setDate(8, null);//pengalamanKerja.getTahunMenjabat()
         stat.executeUpdate();
         stat.close();
-        
+
         //fungsi insert ke tabel penghargaan
         stat = con.prepareStatement(
                 "Insert into penghargaan values (?,?,?,?,?,?)");
-        stat.setString(1,penghargaan.getIdPenghargaan());
+        stat.setString(1, penghargaan.getIdPenghargaan());
         stat.setString(2, basicInformation.getIdBasicInfo());
         stat.setString(3, null);
         stat.setString(4, penghargaan.getNamaPenghargaan());
-        stat.setString(5,penghargaan.getKeteranganPenghargaan());   
+        stat.setString(5, penghargaan.getKeteranganPenghargaan());
         stat.setString(6, "0");
         stat.executeUpdate();
-        stat.close();      
+        stat.close();
     }
 
-    
+    public List<BasicInformation> getBasicInfo() throws SQLException {
+        Connection con = KoneksiPostgre.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        List<BasicInformation> listbasicinfo;
+        String sql = "select id_basic_information, nama_tokoh, tempat_lahir, tanggal_lahir, caption from basic_information";
+        pst = con.prepareStatement(sql);
+        rs = pst.executeQuery();
+        listbasicinfo = new ArrayList<>();
+        while (rs.next()) {
+            BasicInformation basicInfo = new BasicInformation();
+            basicInfo.setIdBasicInfo(rs.getString("id_basic_information"));
+            basicInfo.setNamaTokoh(rs.getString("nama_tokoh"));
+            basicInfo.setTempatLahir(rs.getString("tempat_lahir"));
+            basicInfo.setTanggalLahir(rs.getDate("tanggal_lahir"));
+            basicInfo.setCaption(rs.getString("caption"));
+
+            listbasicinfo.add(basicInfo);
+        }
+        return listbasicinfo;
+    }
+
     public boolean isSkip() {
         return skip;
     }

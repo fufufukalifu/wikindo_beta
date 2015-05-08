@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 
-public class BasicInformation implements Serializable{
+public class BasicInformation implements Serializable {
 
     private String idBasicInfo;
     private String namaTokoh;
@@ -12,6 +12,7 @@ public class BasicInformation implements Serializable{
     private Date tanggalLahir;
     private Date tanggalMeninggal;
     private String agama;
+    private String caption;
 
     private PengalamanKerja pengalamankerja;
     private Article article;
@@ -19,24 +20,29 @@ public class BasicInformation implements Serializable{
     private Penghargaan penghargaan;
     private Gelar gelar;
 
-    public BasicInformation(){
+    public BasicInformation() {
         super();
     }
 
-    public BasicInformation(String idBasicInfo, String namaTokoh, String tempatLahir, Date tanggalLahir, Date tanggalMeninggal, String agama, PengalamanKerja pengalamankerja, Article article, Organisasi organisasi, Penghargaan penghargaan, Gelar gelar) {
+    public void setCaption(String caption) {
+        this.caption = caption;
+    }
+
+    public BasicInformation(String idBasicInfo, String namaTokoh, String tempatLahir, Date tanggalLahir, Date tanggalMeninggal, String agama, PengalamanKerja pengalamankerja, Article article, Organisasi organisasi, Penghargaan penghargaan, Gelar gelar, String caption) {
         this.idBasicInfo = idBasicInfo;
         this.namaTokoh = namaTokoh;
         this.tempatLahir = tempatLahir;
         this.tanggalLahir = tanggalLahir;
         this.tanggalMeninggal = tanggalMeninggal;
         this.agama = agama;
+        this.caption = caption;
         this.pengalamankerja = pengalamankerja;
         this.article = article;
         this.organisasi = organisasi;
         this.penghargaan = penghargaan;
         this.gelar = gelar;
     }
-    
+
     public String getIdBasicInfo() {
         return idBasicInfo;
     }
@@ -55,6 +61,10 @@ public class BasicInformation implements Serializable{
 
     public String getTempatLahir() {
         return tempatLahir;
+    }
+
+    public String getCaption() {
+        return "../../resources/images/avatar/" + caption;
     }
 
     public void setTempatLahir(String tempatLahir) {
@@ -124,6 +134,5 @@ public class BasicInformation implements Serializable{
     public void setGelar(Gelar gelar) {
         this.gelar = gelar;
     }
-
 
 }

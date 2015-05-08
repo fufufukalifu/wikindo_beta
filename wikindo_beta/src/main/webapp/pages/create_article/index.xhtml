@@ -8,14 +8,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
-         <!--<ui:include src="../../WEB-INF/includes/load_css.xhtml"/>-->
+         <ui:include src="../../WEB-INF/includes/load_css.xhtml"/>
     </h:head>
-    <h:body>
+    <h:body class="metro" style="background-color: white" id="top">
        
         <p:layout fullPage="true">
             <p:layoutUnit position="north"  size="100" minSize="40" maxSize="200">
                 <ui:include src="../../WEB-INF/includes/view_header.xhtml"/>
             </p:layoutUnit>
+       
             <p:layoutUnit position="west"  size="200" minSize="40" maxSize="200">
                 <ui:include src="../../WEB-INF/includes/view_sidebar_kontributor.xhtml"/>
             </p:layoutUnit>

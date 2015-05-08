@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <style>
+        .span5{
+            border:1px solid black;
+        }
+        .span3, .span2{
+            display: inline-table;
+
+        }
+    </style>
+    <h:body>
+        <div class="page-header page-header-block">
+            <div class="page-header-section">
+                <h4 class="title semibold">Daftar Tokoh Wikindonesia</h4>
+            </div>
+            <div class="page-header-section">
+            </div>
+        </div>
+
+
+
+        <p:dataGrid value="#{controllerBasicInfo.getBasicInfo()}" var="cb" style="background: none;"  paginator="true" rows="10" styleClass="paginated">
+            <!--                <div class="container">-->
+            <div class="span6 bordered">
+                <div class="span6">
+                    <img src="#{cb.caption}" style="float: left;margin: 5px;"/>
+
+                    <div class="span3">
+                        <h:outputLabel value="#{cb.idBasicInfo}"/>
+                        <h:outputLabel value="#{cb.namaTokoh}"/>
+                        <h:outputLabel value="#{cb.tempatLahir}"/>
+                        <h:outputLabel value="#{cb.agama}"/>                            
+                    </div>
+
+                    <div class="span3">
+                        Data Lengkap | Artikel                          
+                    </div>
+                </div>
+            </div>
+            <!--                </div>-->
+        </p:dataGrid>
+
+    </h:body>
+</html>
+

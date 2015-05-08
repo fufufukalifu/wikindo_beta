@@ -12,7 +12,7 @@ import javax.faces.bean.ManagedBean;
 
 public class Article implements Serializable {
 
-      private String idArticle;
+    private String idArticle;
     private String judulArticle;
     private String isiArticle;
     private Date tanggalDibuat;
@@ -87,5 +87,5 @@ public class Article implements Serializable {
     public void setComment(Comment comment) {
         this.comment = comment;
     }
-    
+
 }
