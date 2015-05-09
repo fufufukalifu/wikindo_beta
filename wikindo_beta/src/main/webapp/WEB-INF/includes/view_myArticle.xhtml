@@ -8,43 +8,42 @@
         <title>Wikindo | My Article</title>
     </h:head>
     <h:body>
-<h:form>
-    <p:dataTable value="#{controllerArticle.infoArticle}" var="ar" paginator="true">
-            <f:facet name="header">
-                My Article
-            </f:facet>                
-            <p:column headerText="Judul ">
-                <h:outputText value="#{ar.idArticle}" style="display:inline-block"/>
-            </p:column>
-            <p:column>
-                <p:growl id="growl" showDetail="true"/>
-                <p:commandButton value="Edit" onclick="PF('editRoleDialog').show()" update="dialogForm"/>
-                    <p:dialog header="Edit Article" widgetVar="editRoleDialog">
-                    <p:panelGrid columns="2" id="dialogForm">
-                        <h:outputText value="Judul" id="display"/>
-                        <h:inputText  value="#{ar.judulArticle}"/>
-                        <h:outputText value="Judul" />
-                        <h:inputText  value="#{ar.isiArticle}"/>
-                        <h:inputText value="#{ar.caption}"/>
-                        <f:facet name="footer">
-                            <p:commandButton value="Submit" actionListener="#{controllerArticle.edit()}"/>
-                        </f:facet>
-                    </p:panelGrid>
-                    </p:dialog>  
-            </p:column>
-            <p:column>
-                <p:growl id="message" showDetail="true" />
-                <p:commandButton value="Delete" actionListener="#{controllerArticle.delete(ar.idArticle)}" update="message">
-                    <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
-                </p:commandButton>
-                <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
-                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                    </p:confirmDialog>  
+        <h:form>
+            <p:dataTable value="#{controllerArticle.infoArticle}" var="ar" paginator="true">
+                <f:facet name="header">
+                    My Article
+                </f:facet>                
+                <p:column headerText="Judul ">
+                    <h:outputText value="#{ar.judulArticle}" style="display:inline-block"/>
                 </p:column>
-           </p:dataTable> 
-        </h:form>
 
+                <p:column width="220">
+                    <p:growl id="growl" showDetail="true"/>
+                    <p:commandButton value="Edit" onclick="PF('editRoleDialog').show()" update="dialogForm"/>
+                    <p:growl id="message" showDetail="true" />
+                    <p:commandButton value="Delete" actionListener="#{controllerArticle.delete(ar.idArticle)}" update="message">
+                        <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+                    </p:commandButton>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>  
+                    <p:dialog header="Edit Article" widgetVar="editRoleDialog">
+                        <p:panelGrid columns="2" id="dialogForm">
+                            <h:outputText value="Judul" id="display"/>
+                            <h:outputText value="#{ar.judulArticle}"/>
+                            <h:inputText  value="#{ar.judulArticle}"/>
+                            <h:outputText value="Judul" />
+                            <h:inputText  value="#{ar.isiArticle}"/>
+                            <h:inputText value="#{ar.caption}"/>
+                            <f:facet name="footer">
+                                <p:commandButton value="Submit" actionListener="#{controllerArticle.edit()}"/>
+                            </f:facet>
+                        </p:panelGrid>
+                    </p:dialog>  
+                </p:column>
+            </p:dataTable> 
+        </h:form>
     </h:body>
 
 
