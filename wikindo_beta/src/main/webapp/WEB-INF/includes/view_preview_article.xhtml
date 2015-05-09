@@ -8,23 +8,24 @@
     </h:head>
     <h:body>
         <div class="title"><h1>Daftar Artikel</h1></div>
-            
-        <p:dataGrid value="#{controllerArticle.getInfoArticle()}" var="ar" class="container" paginator="true" rows="10" styleClass="paginated">
-                <div class="container span5">
-                    <div class="span4">
-                        <h4>
-                            <h:outputLabel value="#{ar.judulArticle}"/>
-                        </h4>
-                        <img src="#{ar.caption}"/>
 
-                        <p style="text-align: justify">
-                            <h:outputLabel value="#{ar.previewArticle}"/>
-                           
-                        </p>
-                    </div>
+        <p:dataGrid value="#{controllerArticle.getInfoArticle()}" var="ar" class="container" paginator="true" rows="10" styleClass="paginated">
+            <div class="container span5">
+                <div class="span4">
+                    <h4>
+                        <h:outputLabel value="#{ar.judulArticle}"/>
+                    </h4>
+                    <img src="#{ar.caption}"/>
+
+                    <p style="text-align: justify">
+                        <h:outputLabel value="#{ar.previewArticle}"/>
+                        <h:button value="#{controllerArticle.sendToSingleArticle(ar.idArticle)}" >Baca Selengkapnya</h:button>
+
+                    </p>
                 </div>
-            </p:dataGrid>
-        
+            </div>
+        </p:dataGrid>
+
 
 
     </h:body>
