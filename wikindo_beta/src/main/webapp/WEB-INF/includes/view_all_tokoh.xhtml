@@ -6,47 +6,50 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-    <style>
-        .span5{
-            border:1px solid black;
-        }
-        .span3, .span2{
-            display: inline-table;
-
-        }
-    </style>
     <h:body>
         <div class="page-header page-header-block">
             <div class="page-header-section">
                 <h4 class="title semibold">Daftar Tokoh Wikindonesia</h4>
             </div>
             <div class="page-header-section">
+                <h:inputText value="Cari tokoh" class="input-control text"/>
             </div>
         </div>
-
-
-
+        <style>
+        </style>
         <p:dataGrid value="#{controllerBasicInfo.getBasicInfo()}" var="cb" style="background: none;"  paginator="true" rows="10" styleClass="paginated">
-            <!--                <div class="container">-->
-            <div class="span6 bordered">
-                <div class="span6">
-                    <img src="#{cb.caption}" style="float: left;margin: 5px;"/>
-
-                    <div class="span3">
-                        <h:outputLabel value="#{cb.idBasicInfo}"/>
-                        <h:outputLabel value="#{cb.namaTokoh}"/>
-                        <h:outputLabel value="#{cb.tempatLahir}"/>
-                        <h:outputLabel value="#{cb.agama}"/>                            
-                    </div>
-
-                    <div class="span3">
-                        Data Lengkap | Artikel                          
+            <div class="container span5">
+                <div class="container" style="width: 100%">
+                    <div class="row" id="shuffle-grid">
+                        <div class="col-sm-6 col-md-4 shuffle">
+                            <div class="panel widget">
+                                <div class="table-layout nm">
+                                    <div class="col-xs-4 text-center">
+                                        <img src="#{cb.caption}" width="100%"/> </div>
+                                    <div class="col-xs-8 valign-middle">
+                                        <div class="panel-body">
+                                            <h5 class="semibold mt0 mb5">
+                                                <h:outputLabel value="#{cb.namaTokoh}"/>
+                                            </h5>
+                                            <p class="ellipsis text-muted mb5">
+                                                <i class="ico-envelop mr5">                                                
+                                                </i>
+                                                <h:outputText value="Tanggal Lahir : #{cb.tanggalLahir}"/>
+                                            </p>
+                                            <p class="text-muted nm">
+                                                <i class="ico-location2 mr5">
+                                                </i> <h:outputText value="Asal : #{cb.tempatLahir}"/></p>                                        
+                                            <h:commandButton class="btn btn-warning" value="Lihat Data" onclick=""/>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--                </div>-->
         </p:dataGrid>
-
     </h:body>
 </html>
 

@@ -1,10 +1,11 @@
 package com.zeroonething.wikindo.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Organisasi {
+public class Organisasi implements Serializable{
 
-    private String noOrganisasi;
+   
     private String namaOrganisasi;
     private Date tahunDidirikan;
     private String dasarHukum;
@@ -15,22 +16,103 @@ public class Organisasi {
     private String dasarHukumPendirian;
 
     private Article article;
-    private Misi misi;
-    private Visi visi;
+    private String misi;
+    private String visi;
 
-    public Organisasi(String noOrganisasi, String namaOrganisasi, Date tahunDidirikan, String dasarHukum, String namaPimpinan, String alamatKantorPusat, String alamatWebsite, String jenisOrganisasi, String dasarHukumPendirian, Article article, Misi misi, Visi visi) {
-        this.noOrganisasi = noOrganisasi;
+    public Organisasi() {
+        super();
+    }
+
+    public String getNamaOrganisasi() {
+        return namaOrganisasi;
+    }
+
+    public void setNamaOrganisasi(String namaOrganisasi) {
         this.namaOrganisasi = namaOrganisasi;
+    }
+
+    public Date getTahunDidirikan() {
+        return tahunDidirikan;
+    }
+
+    public void setTahunDidirikan(Date tahunDidirikan) {
         this.tahunDidirikan = tahunDidirikan;
+    }
+
+    public String getDasarHukum() {
+        return dasarHukum;
+    }
+
+    public void setDasarHukum(String dasarHukum) {
         this.dasarHukum = dasarHukum;
+    }
+
+    public String getNamaPimpinan() {
+        return namaPimpinan;
+    }
+
+    public void setNamaPimpinan(String namaPimpinan) {
         this.namaPimpinan = namaPimpinan;
+    }
+
+    public String getAlamatKantorPusat() {
+        return alamatKantorPusat;
+    }
+
+    public void setAlamatKantorPusat(String alamatKantorPusat) {
         this.alamatKantorPusat = alamatKantorPusat;
+    }
+
+    public String getAlamatWebsite() {
+        return alamatWebsite;
+    }
+
+    public void setAlamatWebsite(String alamatWebsite) {
         this.alamatWebsite = alamatWebsite;
+    }
+
+    public String getJenisOrganisasi() {
+        return jenisOrganisasi;
+    }
+
+    public void setJenisOrganisasi(String jenisOrganisasi) {
         this.jenisOrganisasi = jenisOrganisasi;
+    }
+
+    public String getDasarHukumPendirian() {
+        return dasarHukumPendirian;
+    }
+
+    public void setDasarHukumPendirian(String dasarHukumPendirian) {
         this.dasarHukumPendirian = dasarHukumPendirian;
+    }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
         this.article = article;
+    }
+
+    public String getMisi() {
+        return misi;
+    }
+
+    public void setMisi(String misi) {
         this.misi = misi;
+    }
+
+    public String getVisi() {
+        return visi;
+    }
+
+    public void setVisi(String visi) {
         this.visi = visi;
     }
+
+    
+
+   
 
 }
