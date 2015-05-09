@@ -18,7 +18,7 @@ public class CekKoneksi {
         if (con != null) {
             JOptionPane.showMessageDialog(null, "Koneksi Sukses");
         } else {
-            JOptionPane.showMessageDialog(null, "Koneksi Gagal");
+            JOptionPane.showMessageDialog(null, "koneksinya gagal da");
         }
     }
 }
