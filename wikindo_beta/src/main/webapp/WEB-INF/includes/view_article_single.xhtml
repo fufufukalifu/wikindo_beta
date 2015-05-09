@@ -10,8 +10,15 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+        
+ <f:metadata>
+     <f:viewParam name="article_solo" value="#{art.judulArticle}" />
+</f:metadata>
+
+        
         <p:dataGrid value="#{controllerArticle.getInfoArticleSingle()}" var="ar" class="container">
             <div class="container">
+                
                 <div>
                     <h4 style="text-align: center">
                         <h:outputLabel value="#{ar.judulArticle}"/>
@@ -23,6 +30,7 @@
                     <p style="text-align: justify">
                         <h:outputLabel value="#{ar.isiArticle}"/>
                     </p>
+                    
                 </div>
                 <ui:include src="../../WEB-INF/includes/view_add_comment.xhtml"/>
             </div>

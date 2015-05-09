@@ -75,8 +75,26 @@ public class ControllerArticle implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
-    public void sendToSingleArticle(String idArticle) {
+    public List<Article>  sendToSingleArticle(String idArticle) throws SQLException {
+        Connection con = KoneksiPostgre.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        List<Article> listArticle;
+        String sql = "select * from article where id_article =?";
+        pst = con.prepareStatement(sql);
+        pst.setString(1, idArticle);
+        rs = pst.executeQuery();
+        listArticle = new ArrayList<>();
+        while (rs.next()) {
+            Article article = new Article();
+            article.setIdArticle(rs.getString("id_basic_information"));
+            article.setJudulArticle(rs.getString("judul_article"));
+            article.setIsiArticle(rs.getString("isi_article"));
+            article.setCaption(rs.getString("caption"));
 
+            listArticle.add(article);
+        }
+        return listArticle;
     }
 
     public List<Article> getInfoArticle() throws SQLException {

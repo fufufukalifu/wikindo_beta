@@ -1,5 +1,6 @@
 package com.zeroonething.wikindo.Model;
 
+import com.zeroonething.wikindo.Conntroller.ControllerArticle;
 import com.zeroonething.wikindo.Koneksi.KoneksiPostgre;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -8,8 +9,11 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
+@ManagedBean(name = "art")
 public class Article implements Serializable {
 
     private String idArticle;
@@ -87,5 +91,6 @@ public class Article implements Serializable {
     public void setComment(Comment comment) {
         this.comment = comment;
     }
-
+    
+  
 }
