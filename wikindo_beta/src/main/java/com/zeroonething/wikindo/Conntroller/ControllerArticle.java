@@ -75,6 +75,10 @@ public class ControllerArticle implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
+    public void sendToSingleArticle(String idArticle) {
+
+    }
+
     public List<Article> getInfoArticle() throws SQLException {
         Connection con = KoneksiPostgre.getConnection();
         PreparedStatement pst = null;
@@ -95,8 +99,7 @@ public class ControllerArticle implements Serializable {
         }
         return listArticle;
     }
-    
-    
+
     public List<Article> getInfoArticleSingle() throws SQLException {
         Connection con = KoneksiPostgre.getConnection();
         PreparedStatement pst = null;
@@ -140,34 +143,34 @@ public class ControllerArticle implements Serializable {
     }
 
     public void delete(String idArticle) throws SQLException {
-      Connection con = KoneksiPostgre.getConnection();
-       
-                try {
+        Connection con = KoneksiPostgre.getConnection();
+
+        try {
             PreparedStatement preparedStatement = con
                     .prepareStatement("delete from article where id_article=?");
             // Parameters start with 1
             preparedStatement.setString(1, idArticle);
             preparedStatement.executeUpdate();
-                  addMessage("Success", "Success");
-                  
+            addMessage("Success", "Success");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
- }
- 
+    }
+
     public void edit() throws SQLException {
-     Connection con = KoneksiPostgre.getConnection();
-           addMessage("System Error", "Please try again later.");
-           try {
-               PreparedStatement ps = null;
-     String query = "UPDATE article SET  judul_article=?, isi_article=? where id_article=?";
-     System.out.println("Masuk Edit");
-     ps.executeUpdate();
-     System.out.println("Edit");
-     } catch (SQLException e) {
-               System.out.println("Gagal");
+        Connection con = KoneksiPostgre.getConnection();
+        addMessage("System Error", "Please try again later.");
+        try {
+            PreparedStatement ps = null;
+            String query = "UPDATE article SET  judul_article=?, isi_article=? where id_article=?";
+            System.out.println("Masuk Edit");
+            ps.executeUpdate();
+            System.out.println("Edit");
+        } catch (SQLException e) {
+            System.out.println("Gagal");
             e.printStackTrace();
         }
- }
+    }
 
 }
