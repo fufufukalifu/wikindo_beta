@@ -5,65 +5,120 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title><h:outputText value="#{cb.basicInformation.namaTokoh}"/></title>
     </h:head>
     <h:body>
-        <p:dataGrid value="#{controllerBasicInfo.getDetailBesicInfo(controllerBasicInfo.basicInformation.idBasicInfo)}" var="cb" style="background: none;">
-            <p:panelGrid columns="1" layout="grid">
-
-                
-                    <img src="#{cb.basicInformation.caption}" width="100%"/> 
-                <h:outputText  value="#{cb.basicInformation.namaTokoh},#{cb.gelar.singkatanGelar}" />
-            </p:panelGrid>
-            <p:panelGrid columns="2" layout="grid">
-                <h:outputText value="Tempat Lahir"/>
-                <h:outputText  value="#{cb.basicInformation.tempatLahir}"/>
-                <h:outputText value="Tanggal Meninggal"/>
-                <h:outputText  value="#{cb.basicInformation.tanggalMeninggal}"/>
-                <h:outputText value="Agama"/>
-                <h:outputText  value="#{cb.basicInformation.agama}"/>
-            </p:panelGrid>
-
-            <p:panelGrid columns="2" layout="grid">      
-                <h:outputText value="Jenjang Pendidikan"/>
-                <h:outputText  value="#{cb.pendidikan.jenjangPendidikan}"/>
-                <h:outputText value="Nama Sekolah"/>
-                <h:outputText  value="#{cb.pendidikan.namaSekolah}"/>
-                <h:outputText value="Alamat Sekolah"/>
-                <h:outputText value="#{cb.pendidikan.alamatSekolah}"/>
-                <h:outputText value="Nama Gelar"/>
-                <h:outputText  value="#{cb.gelar.namaGelar}"/>
-                <h:outputText value="Tahun Diraih"/>
-                <h:outputText value="#{cb.gelar.tahunDiraihnya}"/>
-            </p:panelGrid>
-
-            <h:outputText value="Pengalaman Pekerjaan"/>
-            <p:panelGrid columns="2" layout="grid">
-
-                <h:outputText value="Jabatan"/>
-                <h:outputText  value="#{cb.pengalamanKerja.jabatan}"/>
-                <h:outputText value="Diangkat Oleh"/>
-                <h:outputText  value="#{cb.pengalamanKerja.diangkatOleh}"/>
-                <h:outputText value="Menggantikan"/>
-                <h:outputText value="#{cb.pengalamanKerja.menggantikan}"/>           
-                <h:outputText value="Tahun Menjabat"/>
-                <h:outputText  value="#{cb.pengalamanKerja.tahunMenjabat}-#{cb.pengalamanKerja.tahunBerhenti}"/>
-            </p:panelGrid>
-
-            <h:outputText value="Penghargaan yang diraih"/>
-            <p:panelGrid columns="2" layout="grid">
-                <h:outputText value="Nama Penghargaan"/>
-                <h:outputText  value="#{cb.penghargaan.namaPemberiPenghargaan}"/>
-                <h:outputText value="Keterangan Penghargaan"/>
-                <h:outputText  value="#{cb.penghargaan.keteranganPenghargaan}"/>
-            </p:panelGrid>
-
-        </p:dataGrid>
+        <div class="container">
+            <p:dataGrid value="#{controllerBasicInfo.getDetailBesicInfo(controllerBasicInfo.basicInformation.idBasicInfo)}" var="cb" style="background: none;">
+                <div class="col-md-3">
+                    <!-- START Panel pricing -->
+                    <div class="panel panel-default">
+                        <!-- panel heading -->
+                        <div class="panel-heading text-center pa15" style="min-height:100px;">
+                            <h4 class="semibold mt0">                                
+                                <h:outputText value="#{cb.basicInformation.namaTokoh}"/>
+                            </h4>
+                        </div>
+                        <div class="panel-body text-center" style="margin-top:-50px;">
+                            <img class="img-bordered" src="#{cb.basicInformation.caption}" alt="" width="175px" height="175px"/>
+                        </div>
+                        <!--/ panel body -->
+                        <!-- table -->
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Asal : </strong><h:outputText value="#{cb.basicInformation.tempatLahir}"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tanggal lahir :</strong><h:outputText value="#{cb.basicInformation.tanggalLahir}"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Agama :</strong><h:outputText value="#{cb.basicInformation.agama}"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--/ table -->
+                    </div>
+                    <!--/ END Panel pricing -->
+                </div>
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="container">
+                    <div class="span10">
+                        <div class="panel-heading">
+                            <h3 class="panel-title ellipsis text-center warning note note-info mb15">Data Tokoh</h3>
+                        </div>
+                        <div class="panel-collapse pull out">
+                            <div class="panel-body">
+                                <dl class="dl-horizontal">
+                                    <dt></dt>
+                                    <dd>
+                                        <span class="note note-info mb5">Pendidikan</span>
+                                    </dd>
+                                    <dd>
+                                        Jenjang Pendidikan : <h:outputText  value="#{cb.pendidikan.jenjangPendidikan}" />
+                                    </dd>
+
+                                    <dd>
+                                        Nama Perguruan tinggi : <h:outputText  value="#{cb.pendidikan.namaSekolah}" />
+                                    </dd>
+
+                                    <dd>
+                                        Alamat : <h:outputText  value="#{cb.pendidikan.alamatSekolah}" />
+                                    </dd>
+
+                                    <dd>
+                                        <span class="note note-info mb5">Gelar</span>
+                                    </dd>
+                                    <dd>
+                                        Nama Gelar : <h:outputText  value="#{cb.gelar.namaGelar}"/>
+                                    </dd>
+
+                                    <dd>
+                                        Singkatan : <h:outputText  value="#{cb.gelar.singkatanGelar}"/>
+                                    </dd>
+
+                                    <dd>
+                                        <span class="note note-info mb5">Pengalaman Kerja</span>
+                                    </dd>
+                                    <dd>
+                                        Jabatan : <h:outputText  value="#{cb.pengalamanKerja.jabatan}"/>
+                                    </dd>
+                                    <dd>
+                                        Tahun Menjabat : <h:outputText  value="#{cb.pengalamanKerja.tahunMenjabat}"/>
+                                    </dd>
+
+                                    
+                                    <dd>
+                                        <span class="note note-info mb15">
+                                            Penghargaan
+                                        </span>
+                                    </dd>
+                                    
+                                    <dd>Nama Pengharagaan : <h:outputText value="${cb.penghargaan.namaPenghargaan}"/></dd>
+                                </dl>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </p:dataGrid>
+        </div>
     </h:body>
 </html>
 
