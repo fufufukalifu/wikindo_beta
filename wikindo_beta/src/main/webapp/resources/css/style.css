@@ -77,15 +77,15 @@ form[role=login] > div {
     background: gray;
 }
 .link1{
-    margin-left: 310px;
+    margin-left: 400px;
 }
 h5{
 
 }
 .footer-buttom{
     bottom: 0px;
+    margin-left: 40px;
     text-align: center;
-    margin: 0 auto;
     float: none;
     height: 40px;
 }
