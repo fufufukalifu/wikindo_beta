@@ -160,16 +160,40 @@ public class ControllerBasicInfo implements Serializable {
         stat.close();
     }
 
-    public List<ControllerBasicInfo> getBasicInfo() throws SQLException {
+     public List<BasicInformation> getBasicInfo() throws SQLException {
+        Connection con = KoneksiPostgre.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        List<BasicInformation> listbasicinfo;
+        String sql = "select id_basic_information, nama_tokoh, tempat_lahir, tanggal_lahir, caption from basic_information";
+        pst = con.prepareStatement(sql);
+        rs = pst.executeQuery();
+        listbasicinfo = new ArrayList<>();
+        while (rs.next()) {
+            BasicInformation basicInfo = new BasicInformation();
+            basicInfo.setIdBasicInfo(rs.getString("id_basic_information"));
+            basicInfo.setNamaTokoh(rs.getString("nama_tokoh"));
+            basicInfo.setTempatLahir(rs.getString("tempat_lahir"));
+            basicInfo.setTanggalLahir(rs.getDate("tanggal_lahir"));
+            basicInfo.setCaption(rs.getString("caption"));
+
+            listbasicinfo.add(basicInfo);
+        }
+        return listbasicinfo;
+    }
+    
+
+    public List<ControllerBasicInfo> getDetailBesicInfo(String idBasicInfo) throws SQLException {
         Connection con = KoneksiPostgre.getConnection();
         PreparedStatement pst = null;
         ResultSet rs = null;
         List<ControllerBasicInfo> listbasicinfo;
-        String sql = "SELECT * FROM basic_information, pendidikan, gelar, pengalaman_kerja, penghargaan  WHERE\n"
-                + "basic_information.id_basic_information = pendidikan.id_basic_information AND\n"
+        String sql = "SELECT * FROM basic_information,pendidikan, gelar, pengalaman_kerja, penghargaan  WHERE\n"
+               + "basic_information.id_basic_information = pendidikan.id_basic_information AND\n"
                 + "basic_information.id_basic_information = gelar.id_basic_information AND\n"
                 + "basic_information.id_basic_information = pengalaman_kerja.id_basic_information AND\n"
-                + "basic_information.id_basic_information = penghargaan.id_basic_information";
+                + "basic_information.id_basic_information = penghargaan.id_basic_information AND\n"
+                + "basic_information.id_basic_information = '"+idBasicInfo+"'";
         pst = con.prepareStatement(sql);
         rs = pst.executeQuery();
         listbasicinfo = new ArrayList<>();
@@ -200,27 +224,6 @@ public class ControllerBasicInfo implements Serializable {
         return listbasicinfo;
     }
 
-    public List<BasicInformation> getDetailBesicInfo(String idBasicInfo) throws SQLException {
-        Connection con = KoneksiPostgre.getConnection();
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-        List<BasicInformation> listbasicinfo;
-        String sql = "select id_basic_information, nama_tokoh, tempat_lahir, tanggal_lahir, caption from basic_information Where id_basic_information  = '" + idBasicInfo + "'";
-        pst = con.prepareStatement(sql);
-        rs = pst.executeQuery();
-        BasicInformation basicInfo = new BasicInformation();
-        listbasicinfo = new ArrayList<>();
-        while (rs.next()) {
-            basicInfo.setIdBasicInfo(rs.getString("id_basic_information"));
-            basicInfo.setNamaTokoh(rs.getString("nama_tokoh"));
-            basicInfo.setTempatLahir(rs.getString("tempat_lahir"));
-            basicInfo.setTanggalLahir(rs.getDate("tanggal_lahir"));
-            basicInfo.setCaption(rs.getString("caption"));
-            listbasicinfo.add(basicInfo);
-        }
-        return listbasicinfo;
-    }
-
     public boolean isSkip() {
         return skip;
     }
@@ -237,6 +240,7 @@ public class ControllerBasicInfo implements Serializable {
             return event.getNewStep();
         }
     }
+
     public ArrayList<BasicInformation> getTampilApp() throws SQLException {
         ArrayList<BasicInformation> Art;
         Connection con = KoneksiPostgre.getConnection();

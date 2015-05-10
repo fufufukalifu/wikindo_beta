@@ -8,28 +8,11 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
+    <f:metadata>
+        <f:viewParam name="detId" value="#{controllerBasicInfo.basicInformation.idBasicInfo}" />
+    </f:metadata>
     <h:body>
-        <f:metadata>
-            
-            <!--pdk = pendidikan-->
-            <f:viewParam name="detJenjangPdk" value="#{controllerBasicInfo.pendidikan.jenjangPendidikan}"/>
-            <f:viewParam name="detNamaPdk" value="#{controllerBasicInfo.pendidikan.namaSekolah}"/>
-            <f:viewParam name="detAlamtPdk" value="#{controllerBasicInfo.pendidikan.alamatSekolah}"/>
 
-            <f:viewParam name="detNamaGelar" value="#{controllerBasicInfo.gelar.namaGelar}"/>
-            <f:viewParam name="detTahunDiraih" value="#{controllerBasicInfo.gelar.tahunDiraihnya}"/>
-            <f:viewParam name="detSingkatan_gelar" value="#{controllerBasicInfo.gelar.singkatanGelar}"/>
-
-
-            <f:viewParam name="detJabatan" value="#{controllerBasicInfo.pengalamanKerja.jabatan}"/>
-            <f:viewParam name="detDiangkat" value="#{controllerBasicInfo.pengalamanKerja.diangkatOleh}"/>
-            <f:viewParam name="detMenggantikan" value="#{controllerBasicInfo.pengalamanKerja.menggantikan}"/>
-            <f:viewParam name="detTahunBerhenti" value="#{controllerBasicInfo.pengalamanKerja.tahunBerhenti}"/>
-            <f:viewParam name="detTahunDiangkat" value="#{controllerBasicInfo.pengalamanKerja.tahunMenjabat}"/>
-
-            <f:viewParam name="detPenghargaan" value="#{controllerBasicInfo.penghargaan.namaPemberiPenghargaan}"/>
-            <f:viewParam name="detKetPenghargaan" value="#{controllerBasicInfo.penghargaan.keteranganPenghargaan}"/>
-        </f:metadata>
         <ui:include src="../../WEB-INF/includes/view_detail_tokoh.xhtml"/>
     </h:body>
 </html>

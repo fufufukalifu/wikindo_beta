@@ -8,19 +8,19 @@
         <form-view-id>/pages/login/index.xhtml</form-view-id>
         <navigation-case>
             <from-outcome>create_article</from-outcome>
-            <to-view-id>/pages/create_article/index.xhtml</to-view-id>            
+            <to-view-id>/pages/b_create_article/index.xhtml</to-view-id>            
         </navigation-case>
         
-        <form-view-id>/pages/article_solo/index.xhtml</form-view-id>
+        <form-view-id>/pages/f_article_solo/index.xhtml</form-view-id>
         <navigation-case>
             <from-outcome>article_solo</from-outcome>
-            <to-view-id>/pages/article_solo/index.xhtml</to-view-id>            
+            <to-view-id>/pages/f_article_solo/index.xhtml</to-view-id>            
         </navigation-case>
         
-        <form-view-id>/pages/all_tokoh/index.xhtml</form-view-id>
+        <form-view-id>/pages/f_all_tokoh/index.xhtml</form-view-id>
         <navigation-case>
             <from-outcome>detailTokoh</from-outcome>
-            <to-view-id>/pages/detail_tokoh/index.xhtml</to-view-id>            
+            <to-view-id>/pages/f_detail_tokoh/index.xhtml</to-view-id>            
         </navigation-case>
         
     </navigation-rule>

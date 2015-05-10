@@ -8,32 +8,61 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <p:panelGrid columns="1" >
-            <h:outputText value="#{controllerBasicInfo.basicInformation.idBasicInfo}" />
-            <h:outputText  value="#{controllerBasicInfo.basicInformation.namaTokoh}" />
-            <h:outputText  value="#{controllerBasicInfo.basicInformation.tempatLahir}"/>
-            <h:outputText  value="#{controllerBasicInfo.basicInformation.tanggalMeninggal}"/>
-            <h:outputText  value="#{controllerBasicInfo.basicInformation.agama}"/>
-            <!--pdk = pendidikan-->
-            <h:outputText  value="#{controllerBasicInfo.pendidikan.jenjangPendidikan}"/>
-            <h:outputText  value="#{controllerBasicInfo.pendidikan.namaSekolah}"/>
-            <h:outputText value="#{controllerBasicInfo.pendidikan.alamatSekolah}"/>
+        <p:dataGrid value="#{controllerBasicInfo.getDetailBesicInfo(controllerBasicInfo.basicInformation.idBasicInfo)}" var="cb" style="background: none;">
+            <p:panelGrid columns="1" layout="grid">
 
-            <h:outputText  value="#{controllerBasicInfo.gelar.namaGelar}"/>
-            <h:outputText value="#{controllerBasicInfo.gelar.tahunDiraihnya}"/>
-            <h:outputText value="#{controllerBasicInfo.gelar.singkatanGelar}"/>
+                
+                    <img src="#{cb.basicInformation.caption}" width="100%"/> 
+                <h:outputText  value="#{cb.basicInformation.namaTokoh},#{cb.gelar.singkatanGelar}" />
+            </p:panelGrid>
+            <p:panelGrid columns="2" layout="grid">
+                <h:outputText value="Tempat Lahir"/>
+                <h:outputText  value="#{cb.basicInformation.tempatLahir}"/>
+                <h:outputText value="Tanggal Meninggal"/>
+                <h:outputText  value="#{cb.basicInformation.tanggalMeninggal}"/>
+                <h:outputText value="Agama"/>
+                <h:outputText  value="#{cb.basicInformation.agama}"/>
+            </p:panelGrid>
+
+            <p:panelGrid columns="2" layout="grid">      
+                <h:outputText value="Jenjang Pendidikan"/>
+                <h:outputText  value="#{cb.pendidikan.jenjangPendidikan}"/>
+                <h:outputText value="Nama Sekolah"/>
+                <h:outputText  value="#{cb.pendidikan.namaSekolah}"/>
+                <h:outputText value="Alamat Sekolah"/>
+                <h:outputText value="#{cb.pendidikan.alamatSekolah}"/>
+                <h:outputText value="Nama Gelar"/>
+                <h:outputText  value="#{cb.gelar.namaGelar}"/>
+                <h:outputText value="Tahun Diraih"/>
+                <h:outputText value="#{cb.gelar.tahunDiraihnya}"/>
+            </p:panelGrid>
+
+            <h:outputText value="Pengalaman Pekerjaan"/>
+            <p:panelGrid columns="2" layout="grid">
+
+                <h:outputText value="Jabatan"/>
+                <h:outputText  value="#{cb.pengalamanKerja.jabatan}"/>
+                <h:outputText value="Diangkat Oleh"/>
+                <h:outputText  value="#{cb.pengalamanKerja.diangkatOleh}"/>
+                <h:outputText value="Menggantikan"/>
+                <h:outputText value="#{cb.pengalamanKerja.menggantikan}"/>           
+                <h:outputText value="Tahun Menjabat"/>
+                <h:outputText  value="#{cb.pengalamanKerja.tahunMenjabat}-#{cb.pengalamanKerja.tahunBerhenti}"/>
+            </p:panelGrid>
+
+            <h:outputText value="Penghargaan yang diraih"/>
+            <p:panelGrid columns="2" layout="grid">
+                <h:outputText value="Nama Penghargaan"/>
+                <h:outputText  value="#{cb.penghargaan.namaPemberiPenghargaan}"/>
+                <h:outputText value="Keterangan Penghargaan"/>
+                <h:outputText  value="#{cb.penghargaan.keteranganPenghargaan}"/>
+            </p:panelGrid>
+
+        </p:dataGrid>
 
 
-            <h:outputText  value="#{controllerBasicInfo.pengalamanKerja.jabatan}"/>
-            <h:outputText  value="#{controllerBasicInfo.pengalamanKerja.diangkatOleh}"/>
-            <h:outputText value="#{controllerBasicInfo.pengalamanKerja.menggantikan}"/>
-            <h:outputText  value="#{controllerBasicInfo.pengalamanKerja.tahunBerhenti}"/>
-            <h:outputText  value="#{controllerBasicInfo.pengalamanKerja.tahunMenjabat}"/>
 
-            <h:outputText  value="#{controllerBasicInfo.penghargaan.namaPemberiPenghargaan}"/>
-            <h:outputText  value="#{controllerBasicInfo.penghargaan.keteranganPenghargaan}"/>
-        </p:panelGrid>
-        
+
 
     </h:body>
 </html>
