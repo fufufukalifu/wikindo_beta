@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -25,31 +26,55 @@
                             <div class="panel widget">
                                 <div class="table-layout nm">
                                     <div class="col-xs-4 text-center">
-                                        <img src="#{cb.caption}" width="100%"/> </div>
+                                        <img src="#{cb.basicInformation.caption}" width="100%"/> </div>
                                     <div class="col-xs-8 valign-middle">
                                         <div class="panel-body">
                                             <h5 class="semibold mt0 mb5">
-                                                <h:outputLabel value="#{cb.namaTokoh}"/>
+                                                <h:outputLabel value="#{cb.basicInformation.namaTokoh}"/>
                                             </h5>
                                             <p class="ellipsis text-muted mb5">
                                                 <i class="ico-envelop mr5">                                                
                                                 </i>
-                                                <h:outputText value="Tanggal Lahir : #{cb.tanggalLahir}"/>
+                                                <h:outputText value="Tanggal Lahir : #{cb.basicInformation.tanggalLahir}"/>
                                             </p>
                                             <p class="text-muted nm">
                                                 <i class="ico-location2 mr5">
-                                                </i> <h:outputText value="Asal : #{cb.tempatLahir}"/></p>                                        
-                                            <h:commandButton class="btn btn-warning" value="Lihat Data" onclick=""/>
-                                        </div>
-                                        
+                                                </i> <h:outputText value="Asal : #{cb.basicInformation.tempatLahir}"/></p>                                        
+                                            <p:button outcome="detailTokoh" class="btn btn-warning" value="Lihat Data" >
+                                                <!--det = detail, melempar nilai-->
+                                                <f:param name="detId" value="#{cb.basicInformation.idBasicInfo}" />
+                                                <f:param name="detNama" value="#{cb.basicInformation.namaTokoh}"/>
+                                                <f:param name="detTtl" value="#{cb.basicInformation.tempatLahir}"/>
+                                                <f:param name="detTglMeninggal" value="#{cb.basicInformation.tanggalMeninggal}"/>
+                                                <f:param name="detAgama" value="#{cb.basicInformation.agama}"/>
+                                                <!--pdk = pendidikan-->
+                                                <f:param name="detJenjangPdk" value="#{cb.pendidikan.jenjangPendidikan}"/>
+                                                <f:param name="detNamaPdk" value="#{cb.pendidikan.namaSekolah}"/>
+                                                <f:param name="detAlamtPdk" value="#{cb.pendidikan.alamatSekolah}"/>
+                                                
+                                                <f:param name="detNamaGelar" value="#{cb.gelar.namaGelar}"/>
+                                                <f:param name="detTahunDiraih" value="#{cb.gelar.tahunDiraihnya}"/>
+                                                <f:param name="detSingkatan_gelar" value="#{cb.gelar.singkatanGelar}"/>
+            
+                                                <f:param name="detJabatan" value="#{cb.pengalamanKerja.jabatan}"/>
+                                                <f:param name="detDiangkat" value="#{cb.pengalamanKerja.diangkatOleh}"/>
+                                                <f:param name="detMenggantikan" value="#{cb.pengalamanKerja.menggantikan}"/>
+                                                <f:param name="detTahunBerhenti" value="#{cb.pengalamanKerja.tahunBerhenti}"/>
+                                                <f:param name="detTahunDiangkat" value="#{cb.pengalamanKerja.tahunMenjabat}"/>
+                                                
+                                                <f:param name="detPenghargaan" value="#{cb.penghargaan.namaPemberiPenghargaan}"/>
+                                                <f:param name="detKetPenghargaan" value="#{cb.penghargaan.keteranganPenghargaan}"/>
+                                        </p:button>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </p:dataGrid>
-    </h:body>
+        </div>
+    </p:dataGrid>
+</h:body>
 </html>
 

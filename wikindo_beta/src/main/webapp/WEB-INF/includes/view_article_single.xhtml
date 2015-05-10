@@ -9,14 +9,19 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
+    <f:metadata>
+     <f:viewParam name="article_solo" value="#{art.judulArticle}"/>
+</f:metadata>
     <h:body>
         
- <f:metadata>
-     <f:viewParam name="article_solo" value="#{art.judulArticle}" />
-</f:metadata>
+ 
 
-        
-        <p:dataGrid value="#{controllerArticle.getInfoArticleSingle()}" var="ar" class="container">
+        <p>You've been redirected to this bookmarkable page with button.
+    ViewParameter you've passed is <strong>"
+    #{art.judulArticle}"</strong>
+</p>
+        <p:dataGrid value="#{controllerArticle.infoArticleSingle}" var="a"/>
+        <p:dataGrid value="#{controllerArticle.sendToSingleArticle(a.judulArticle)}" var="ar" class="container">
             <div class="container">
                 
                 <div>

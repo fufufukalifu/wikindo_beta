@@ -195,4 +195,51 @@ public class ControllerOrganisasi implements Serializable {
         }
     }
     
+    public List<Organisasi> getOrganisasiBack() throws SQLException {
+        Connection con = KoneksiPostgre.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        List<Organisasi> listOrganisasi;
+        String sql = "SELECT * FROM ORGANISASI";
+        pst = con.prepareStatement(sql);
+        rs = pst.executeQuery();
+        listOrganisasi = new ArrayList<>();
+        while (rs.next()) {
+            Organisasi organisasi = new Organisasi();
+            organisasi.setNamaOrganisasi(rs.getString("nama_organisasi"));
+            organisasi.setAlamatWebsite(rs.getString("alamat_website"));
+            listOrganisasi.add(organisasi);
+        }
+        return listOrganisasi;
+    }
+    
+    public void deleteOrganisasi(String namaOrganisasi) throws SQLException {
+        Connection con = KoneksiPostgre.getConnection();
+
+        try {
+            PreparedStatement preparedStatement = con
+                    .prepareStatement("delete from organisasi where nama_organisasi=?");
+            // Parameters start with 1
+            preparedStatement.setString(1, namaOrganisasi);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void editOrganisasi() throws SQLException {
+        Connection con = KoneksiPostgre.getConnection();
+        try {
+            PreparedStatement ps = null;
+            String query = "UPDATE organisasi set nama_organisasi=? where id_organisasi=?";
+            System.out.println("Masuk Edit");
+            ps.executeUpdate();
+            System.out.println("Edit");
+        } catch (SQLException e) {
+            System.out.println("Gagal");
+            e.printStackTrace();
+        }
+    }
+    
 }
