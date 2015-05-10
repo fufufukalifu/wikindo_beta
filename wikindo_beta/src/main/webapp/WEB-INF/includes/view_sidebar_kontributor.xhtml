@@ -11,15 +11,24 @@
             <p:growl autoUpdate="true"/>
             <p:panelMenu>
                 <p:submenu label="Tokoh Wikindonesia">
-                    <p:menuitem value="Semua tokoh" actionListener="#{menuView.save}"/>                   
+                    <p:menuitem >
+                        <a href="../f_all_tokoh/index.xhtml">Semua Tokoh</a>
+                    </p:menuitem> 
                 </p:submenu>
                 
                 <p:submenu label="Organisasi">
-                    <p:menuitem value="Organisasi Wikindonesia" actionListener="#{menuView.delete}"/>
+                    <p:menuitem >
+                        <a href="../f_all_organisasi/index.xhtml">Organisasi Wikindonesia</a>
+                    </p:menuitem>
                 </p:submenu>
-                
+              
                 <p:submenu label="Artikel">
-                    <p:menuitem value="Artikel" actionListener="#{menuView.delete}"/>
+                    <p:menuitem >
+                        <a href="../b_edit_article/index.xhtml">My Artikel</a>
+                    </p:menuitem>
+                    <p:menuitem >
+                        <a href="../b_create_article/index.xhtml">Create Artikel</a>
+                    </p:menuitem>
                 </p:submenu>
                 
                 <p:separator />
