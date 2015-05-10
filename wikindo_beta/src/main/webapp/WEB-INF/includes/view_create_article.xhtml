@@ -5,19 +5,15 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title></title>
     </h:head>
     <h:body>
         <h:form> 
-            <p:separator />
-            <p:inputText value="#{controllerArticle.article.judulArticle}" placeholder="Judul"/>
+            <p:inputText value="#{controllerArticle.article.judulArticle}" placeholder="Judul" class="form-control"/>
             <br></br>
             <h:selectOneRadio id="listRadio" value="#{controllerArticle.getInfoArticle()}">
                 <f:selectItems id="listOptions" value="#{controllerArticle.basicInfo.idBasicInfo}" />
             </h:selectOneRadio>
-            <p:separator />
-
-
 
             <p:editor id="editor"  widgetVar="editorWidget" value="#{controllerArticle.article.isiArticle}" width="600" />
 
