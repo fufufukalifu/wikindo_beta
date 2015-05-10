@@ -103,7 +103,7 @@ public class ControllerArticle implements Serializable {
         PreparedStatement pst = null;
         ResultSet rs = null;
         List<Article> listArticle;
-        String sql = "select * from article limit 10";
+        String sql = "select * from article";
         pst = con.prepareStatement(sql);
         rs = pst.executeQuery();
         listArticle = new ArrayList<>();
@@ -112,6 +112,7 @@ public class ControllerArticle implements Serializable {
             article.setIdArticle(rs.getString("id_basic_information"));
             article.setJudulArticle(rs.getString("judul_article"));
             article.setIsiArticle(rs.getString("isi_article"));
+            
             article.setCaption(rs.getString("caption"));
 
             listArticle.add(article);

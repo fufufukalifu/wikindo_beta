@@ -9,40 +9,29 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-    <f:metadata>
-     <f:viewParam name="article_solo" value="#{art.judulArticle}"/>
-</f:metadata>
-    <h:body>
-        
- 
 
-        <p>You've been redirected to this bookmarkable page with button.
-    ViewParameter you've passed is <strong>"
-    #{art.judulArticle}"</strong>
-</p>
-        <p:dataGrid value="#{controllerArticle.infoArticleSingle}" var="a"/>
-        <p:dataGrid value="#{controllerArticle.sendToSingleArticle(a.judulArticle)}" var="ar" class="container">
+
+    <h:body>
+            
             <div class="container">
-                
+
                 <div>
                     <h4 style="text-align: center">
-                        <h:outputLabel value="#{ar.judulArticle}"/>
+                        <h:outputLabel value="#{controllerArticle.article.judulArticle}"/>
                     </h4>
-                    <img src="#{ar.caption}" width="200px" style="
-                         float: left;margin: 5px;"/>
-                    <p:outputLabel value="#{ar.caption}"/>
+                   <img src="#{controllerArticle.article.caption}"/>
 
                     <p style="text-align: justify">
-                        <h:outputLabel value="#{ar.isiArticle}"/>
+                        <h:outputLabel value="#{controllerArticle.article.isiArticle}"/>
                     </p>
                     <p>You've been redirected to this bookmarkable page with button.
-    ViewParameter you've passed is <strong>"
-    #{ar.judulArticle}"</strong>
-</p>
+                        ViewParameter you've passed is <strong>"
+                            #{ar.judulArticle}"</strong>
+                    </p>
                 </div>
                 <ui:include src="../../WEB-INF/includes/view_add_comment.xhtml"/>
             </div>
-        </p:dataGrid>
+      
     </h:body>
 </html>
 
