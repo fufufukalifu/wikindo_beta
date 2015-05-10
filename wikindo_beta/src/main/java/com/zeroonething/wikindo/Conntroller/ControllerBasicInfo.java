@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -187,5 +188,47 @@ public class ControllerBasicInfo implements Serializable {
         } else {
             return event.getNewStep();
         }
+    }
+     public ArrayList<BasicInformation> getTampilApp() throws SQLException {
+        ArrayList<BasicInformation> Art;
+        Connection con = KoneksiPostgre.getConnection();
+
+        try {
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery("Select * from basic_information");
+            Art = new ArrayList<BasicInformation>();
+            while (rs.next()) {
+                BasicInformation basic = new BasicInformation();
+                basic.setIdBasicInfo(rs.getString("id_basic_information"));
+                basic.setNamaTokoh(rs.getString("nama_tokoh"));
+                basic.setTanggalLahir(rs.getDate("tanggal_lahir"));
+                basic.setTanggalMeninggal(rs.getDate("tanggal_meninggal"));
+                basic.setAgama(rs.getString("agama"));
+                Art.add(basic);
+            }
+
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        return Art;
+    }
+
+    public List<BasicInformation> getSearch(String namaTokoh) throws SQLException {
+        PreparedStatement ps = KoneksiPostgre.getConnection().prepareStatement("select * from basic_information where nama_tokoh like ?");
+        ps.setString(1, "%" + namaTokoh + "%");
+        ResultSet rs = ps.executeQuery();
+        List<BasicInformation> list = new ArrayList<BasicInformation>();
+        if (rs.next()) {
+            BasicInformation basic = new BasicInformation();
+            basic.setIdBasicInfo(rs.getString("id_basic_information"));
+            basic.setNamaTokoh(rs.getString("nama_tokoh"));
+            basic.setTanggalLahir(rs.getDate("tanggal_lahir"));
+            basic.setTanggalMeninggal(rs.getDate("tanggal_meninggal"));
+            basic.setAgama(rs.getString("agama"));
+            list.add(basic);
+        }
+        return list;
     }
 }

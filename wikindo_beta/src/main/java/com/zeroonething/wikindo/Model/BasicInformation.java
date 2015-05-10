@@ -2,8 +2,10 @@ package com.zeroonething.wikindo.Model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 
+@ManagedBean
 public class BasicInformation implements Serializable {
 
     private String idBasicInfo;
@@ -12,7 +14,8 @@ public class BasicInformation implements Serializable {
     private Date tanggalLahir;
     private Date tanggalMeninggal;
     private String agama;
-    private String caption;
+    private String caption; 
+    private List <BasicInformation> basic;
 
     private PengalamanKerja pengalamankerja;
     private Article article;
@@ -23,6 +26,15 @@ public class BasicInformation implements Serializable {
     public BasicInformation() {
         super();
     }
+
+    public List<BasicInformation> getBasic() {
+        return basic;
+    }
+
+    public void setBasic(List<BasicInformation> basic) {
+        this.basic = basic;
+    }
+    
 
     public void setCaption(String caption) {
         this.caption = caption;
