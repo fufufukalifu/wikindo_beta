@@ -12,12 +12,13 @@ and open the template in the editor.
     <h:head>
         <title>Wiki Indonesia | Organisasi</title>
     </h:head>
+    <f:view>
     <body>
         <h:panelGrid columns="2" cellpadding="5">
         <h:form>
             <p:dataTable value="#{controllerOrganisasi.organisasiBack}" var="ar" paginator="true">
                 <f:facet name="header">
-                    My Article
+                    Organisasi
                 </f:facet>                
                 <p:column headerText="Nama Organisasi">
                     <h:outputText value="#{ar.namaOrganisasi}" style="display:inline-block"/>
@@ -38,7 +39,9 @@ and open the template in the editor.
                         <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                         <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                     </p:confirmDialog>  
-                    <p:dialog header="Edit Article" widgetVar="editRoleDialog">
+                     
+                </p:column>
+                <p:dialog header="Edit Article" widgetVar="editRoleDialog">
                         <p:panelGrid columns="2" id="dialogForm">
                             <h:outputText value="Nama Organisasi" id="display"/>
                             <h:inputText  value="#{ar.namaOrganisasi}"/>
@@ -48,11 +51,11 @@ and open the template in the editor.
                                 <p:commandButton value="Submit" actionListener="#{controllerOrganisasi.editOrganisasi()}"/>
                             </f:facet>
                         </p:panelGrid>
-                    </p:dialog>  
-                </p:column>
+                    </p:dialog> 
             </p:dataTable> 
         </h:form>
         </h:panelGrid>
         
     </body>
+    </f:view>
 </html>
