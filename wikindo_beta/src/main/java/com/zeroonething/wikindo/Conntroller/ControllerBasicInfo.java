@@ -17,7 +17,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -39,6 +38,15 @@ public class ControllerBasicInfo implements Serializable {
     private Pendidikan pendidikan = new Pendidikan();
     private PengalamanKerja pengalamanKerja = new PengalamanKerja();
     private Penghargaan penghargaan = new Penghargaan();
+    private String idBasicInfo;
+
+    public String getIdBasicInfo() {
+        return idBasicInfo;
+    }
+
+    public void setIdBasicInfo(String idBasicInfo) {
+        this.idBasicInfo = idBasicInfo;
+    }
 
     private boolean skip;
 
@@ -151,23 +159,62 @@ public class ControllerBasicInfo implements Serializable {
         stat.close();
     }
 
-    public List<BasicInformation> getBasicInfo() throws SQLException {
+    public List<ControllerBasicInfo> getBasicInfo() throws SQLException {
         Connection con = KoneksiPostgre.getConnection();
         PreparedStatement pst = null;
         ResultSet rs = null;
-        List<BasicInformation> listbasicinfo;
-        String sql = "select id_basic_information, nama_tokoh, tempat_lahir, tanggal_lahir, caption from basic_information";
+        List<ControllerBasicInfo> listbasicinfo;
+        String sql = "SELECT * FROM basic_information, pendidikan, gelar, pengalaman_kerja, penghargaan  WHERE\n"
+                + "basic_information.id_basic_information = pendidikan.id_basic_information AND\n"
+                + "basic_information.id_basic_information = gelar.id_basic_information AND\n"
+                + "basic_information.id_basic_information = pengalaman_kerja.id_basic_information AND\n"
+                + "basic_information.id_basic_information = penghargaan.id_basic_information";
         pst = con.prepareStatement(sql);
         rs = pst.executeQuery();
         listbasicinfo = new ArrayList<>();
         while (rs.next()) {
-            BasicInformation basicInfo = new BasicInformation();
+            ControllerBasicInfo basicInfo = new ControllerBasicInfo();
+            basicInfo.basicInformation.setIdBasicInfo(rs.getString("id_basic_information"));
+            basicInfo.basicInformation.setNamaTokoh(rs.getString("nama_tokoh"));
+            basicInfo.basicInformation.setTempatLahir(rs.getString("tempat_lahir"));
+            basicInfo.basicInformation.setTanggalLahir(rs.getDate("tanggal_lahir"));
+            basicInfo.basicInformation.setAgama(rs.getString("agama"));
+            basicInfo.basicInformation.setCaption(rs.getString("caption"));
+            basicInfo.pendidikan.setJenjangPendidikan(rs.getString("jenjang_pendidikan"));
+            basicInfo.pendidikan.setNamaSekolah(rs.getString("nama_sekolah"));
+            basicInfo.pendidikan.setAlamatSekolah(rs.getString("alamat_pendidikan"));
+            basicInfo.gelar.setNamaGelar(rs.getString("nama_gelar"));
+            basicInfo.gelar.setTahunDiraihnya(rs.getDate("tahun_diraih"));
+            basicInfo.gelar.setSingkatanGelar(rs.getString("singkatan_gelar"));
+            basicInfo.pengalamanKerja.setJabatan(rs.getString("jabatan"));
+            basicInfo.pengalamanKerja.setDiangkatOleh(rs.getString("diangkat_oleh"));
+            basicInfo.pengalamanKerja.setMenggantikan(rs.getString("menggantikan"));
+            basicInfo.pengalamanKerja.setTahunBerhenti(rs.getDate("tahun_berhenti"));
+            basicInfo.pengalamanKerja.setTahunMenjabat(rs.getDate("tahun_menjabat"));
+            basicInfo.penghargaan.setNamaPenghargaan(rs.getString("nama_penghargaan"));
+            basicInfo.penghargaan.setKeteranganPenghargaan(rs.getString("keterangan_penghargaan"));
+
+            listbasicinfo.add(basicInfo);
+        }
+        return listbasicinfo;
+    }
+
+    public List<BasicInformation> getDetailBesicInfo(String idBasicInfo) throws SQLException {
+        Connection con = KoneksiPostgre.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        List<BasicInformation> listbasicinfo;
+        String sql = "select id_basic_information, nama_tokoh, tempat_lahir, tanggal_lahir, caption from basic_information Where id_basic_information  = '" + idBasicInfo + "'";
+        pst = con.prepareStatement(sql);
+        rs = pst.executeQuery();
+        BasicInformation basicInfo = new BasicInformation();
+        listbasicinfo = new ArrayList<>();
+        while (rs.next()) {
             basicInfo.setIdBasicInfo(rs.getString("id_basic_information"));
             basicInfo.setNamaTokoh(rs.getString("nama_tokoh"));
             basicInfo.setTempatLahir(rs.getString("tempat_lahir"));
             basicInfo.setTanggalLahir(rs.getDate("tanggal_lahir"));
             basicInfo.setCaption(rs.getString("caption"));
-
             listbasicinfo.add(basicInfo);
         }
         return listbasicinfo;
@@ -188,47 +235,5 @@ public class ControllerBasicInfo implements Serializable {
         } else {
             return event.getNewStep();
         }
-    }
-     public ArrayList<BasicInformation> getTampilApp() throws SQLException {
-        ArrayList<BasicInformation> Art;
-        Connection con = KoneksiPostgre.getConnection();
-
-        try {
-            Statement stat = con.createStatement();
-            ResultSet rs = stat.executeQuery("Select * from basic_information");
-            Art = new ArrayList<BasicInformation>();
-            while (rs.next()) {
-                BasicInformation basic = new BasicInformation();
-                basic.setIdBasicInfo(rs.getString("id_basic_information"));
-                basic.setNamaTokoh(rs.getString("nama_tokoh"));
-                basic.setTanggalLahir(rs.getDate("tanggal_lahir"));
-                basic.setTanggalMeninggal(rs.getDate("tanggal_meninggal"));
-                basic.setAgama(rs.getString("agama"));
-                Art.add(basic);
-            }
-
-        } finally {
-            if (con != null) {
-                con.close();
-            }
-        }
-        return Art;
-    }
-
-    public List<BasicInformation> getSearch(String namaTokoh) throws SQLException {
-        PreparedStatement ps = KoneksiPostgre.getConnection().prepareStatement("select * from basic_information where nama_tokoh like ?");
-        ps.setString(1, "%" + namaTokoh + "%");
-        ResultSet rs = ps.executeQuery();
-        List<BasicInformation> list = new ArrayList<BasicInformation>();
-        if (rs.next()) {
-            BasicInformation basic = new BasicInformation();
-            basic.setIdBasicInfo(rs.getString("id_basic_information"));
-            basic.setNamaTokoh(rs.getString("nama_tokoh"));
-            basic.setTanggalLahir(rs.getDate("tanggal_lahir"));
-            basic.setTanggalMeninggal(rs.getDate("tanggal_meninggal"));
-            basic.setAgama(rs.getString("agama"));
-            list.add(basic);
-        }
-        return list;
     }
 }
