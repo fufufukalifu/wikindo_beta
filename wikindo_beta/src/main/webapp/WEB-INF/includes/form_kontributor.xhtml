@@ -42,12 +42,12 @@
                             
                             <p:outputLabel for="console" value="Jenis Kelamin:" />
                             <p:selectOneRadio id="console" value="#{userWizard.user.jenisKelamin}">
-                                <f:selectItem itemLabel="Laki-Laki" itemValue="Laki-Laki" />
-                                <f:selectItem itemLabel="Perermpuan" itemValue="Perermpuan" />
+                                <f:selectItem itemLabel="Laki-Laki" itemValue="Laki-Laki"/>
+                                <f:selectItem itemLabel="Perermpuan" itemValue="Perempuan" />
                             </p:selectOneRadio>
 
                             <h:outputText value="Alamat: " />
-                            <p:inputText value="#{userWizard.user.alamat}" />
+                            <p:inputTextarea value="#{userWizard.user.alamat}" />
 
                             <h:outputText value="Skip to last: " />
                             <h:selectBooleanCheckbox value="#{userWizard.skip}" />
