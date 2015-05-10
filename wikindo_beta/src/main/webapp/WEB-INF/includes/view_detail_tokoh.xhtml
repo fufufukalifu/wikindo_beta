@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:panelGrid columns="1" >
+            <h:outputText value="#{controllerBasicInfo.basicInformation.idBasicInfo}" />
+            <h:outputText  value="#{controllerBasicInfo.basicInformation.namaTokoh}" />
+            <h:outputText  value="#{controllerBasicInfo.basicInformation.tempatLahir}"/>
+            <h:outputText  value="#{controllerBasicInfo.basicInformation.tanggalMeninggal}"/>
+            <h:outputText  value="#{controllerBasicInfo.basicInformation.agama}"/>
+            <!--pdk = pendidikan-->
+            <h:outputText  value="#{controllerBasicInfo.pendidikan.jenjangPendidikan}"/>
+            <h:outputText  value="#{controllerBasicInfo.pendidikan.namaSekolah}"/>
+            <h:outputText value="#{controllerBasicInfo.pendidikan.alamatSekolah}"/>
+
+            <h:outputText  value="#{controllerBasicInfo.gelar.namaGelar}"/>
+            <h:outputText value="#{controllerBasicInfo.gelar.tahunDiraihnya}"/>
+            <h:outputText value="#{controllerBasicInfo.gelar.singkatanGelar}"/>
+
+
+            <h:outputText  value="#{controllerBasicInfo.pengalamanKerja.jabatan}"/>
+            <h:outputText  value="#{controllerBasicInfo.pengalamanKerja.diangkatOleh}"/>
+            <h:outputText value="#{controllerBasicInfo.pengalamanKerja.menggantikan}"/>
+            <h:outputText  value="#{controllerBasicInfo.pengalamanKerja.tahunBerhenti}"/>
+            <h:outputText  value="#{controllerBasicInfo.pengalamanKerja.tahunMenjabat}"/>
+
+            <h:outputText  value="#{controllerBasicInfo.penghargaan.namaPemberiPenghargaan}"/>
+            <h:outputText  value="#{controllerBasicInfo.penghargaan.keteranganPenghargaan}"/>
+        </p:panelGrid>
+        
+
+    </h:body>
+</html>
+
