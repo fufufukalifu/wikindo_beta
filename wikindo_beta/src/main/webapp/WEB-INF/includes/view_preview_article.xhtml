@@ -21,12 +21,11 @@
 
                     <p style="text-align: justify">
                         <h:outputLabel value="#{ar.previewArticle}"/>
-                        <p:commandButton value="Baca Selengkapnya" onclick="PF('editRoleDialog').show()"/>
+                        <p:button outcome="article_solo" value="Baca Selengkapnya">
+                            <f:param name="judul_article" value="#{ar.judulArticle}"/>
+                        </p:button>
 
                     </p>
-                    <p:link outcome="article_solo" value="Bookmark">
-                        <f:param name="article_solo" value="#{ar.judulArticle}" />
-                    </p:link>
                 </div>
             </div>
         </p:dataGrid>
