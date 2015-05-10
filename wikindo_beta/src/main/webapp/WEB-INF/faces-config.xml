@@ -21,7 +21,7 @@
         <navigation-case>
             <from-outcome>detailTokoh</from-outcome>
             <to-view-id>/pages/f_detail_tokoh/index.xhtml</to-view-id>            
-        </navigation-case>
+        </navigation-case>       
         
     </navigation-rule>
     

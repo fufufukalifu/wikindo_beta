@@ -8,16 +8,37 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:growl autoUpdate="true"/>
-
-            <p:panelMenu style="width:300px">
-                <p:submenu label="Ajax Menuitems">
-                    <p:menuitem value="Save"  icon="ui-icon-disk" />
-                    <p:menuitem value="Update"   icon="ui-icon-arrowrefresh-1-w" />
+          <p:growl autoUpdate="true"/>
+            <p:panelMenu>
+                <p:submenu label="Tokoh Wikindonesia">
+                    <p:menuitem >
+                        <a href="../f_all_tokoh_dr/index.xhtml">Semua Tokoh</a>
+                    </p:menuitem> 
+                    
+                    <p:menuitem >
+                        <a href="../b_form_kontributor/index.xhtml">Create tokoh</a>
+                    </p:menuitem>
+                    <p:menuitem>
+                        <a href="">Edit/Delete Tokoh</a>
+                    </p:menuitem> 
                 </p:submenu>
-                <p:submenu label="Non-Ajax Menuitem">
-                    <p:menuitem value="Delete"   ajax="false" icon="ui-icon-close"/>
+                
+                <p:submenu label="Organisasi">
+                    <p:menuitem >
+                        <a href="../f_all_organisasi_dr/index.xhtml">Organisasi Wikindonesia</a>
+                    </p:menuitem>
+                    <p:menuitem >
+                        <a href="../b_form_organisasi/index.xhtml">Create Organisasi</a>
+                    </p:menuitem>
+                    <p:menuitem >
+                        <a href="../f_back_organisasi/index.xhtml">Edit/Delete Organisasi</a>
+                    </p:menuitem>
                 </p:submenu>
+                
+                <p:submenu label="Artikel">
+                    <p:menuitem value="Approve" actionListener="#{menuView.delete}"/>
+                </p:submenu>
+                
                 <p:separator />
                 <p:submenu label="Navigations" >
                     <p:submenu label="Links" icon="ui-icon-extlink">
@@ -28,7 +49,7 @@
                             <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
                         </p:submenu>
                     </p:submenu>
-                     
+                   
                 </p:submenu>
             </p:panelMenu>
         </h:form>
