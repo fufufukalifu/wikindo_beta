@@ -9,21 +9,12 @@
     </h:head>
     <h:body>
         <h:form> 
-
-            <p:dataGrid value="#{controllerArticle.getInfoArticle()}" var='c_a'>
-                <h:outputLabel value="#{c_a.judulArticle}"/>
-            </p:dataGrid>
             <p:separator />
             <p:inputText value="#{controllerArticle.article.judulArticle}" placeholder="Judul"/>
             <br></br>
             <h:selectOneRadio id="listRadio" value="#{controllerArticle.getInfoArticle()}">
                 <f:selectItems id="listOptions" value="#{controllerArticle.basicInfo.idBasicInfo}" />
             </h:selectOneRadio>
-
-            <h:selectOneMenu value="#{controllerArticle.getInfoArticle()}">
-                <f:selectItem itemValue="Extreme Mocha" itemLabel="Coffee3 - Extreme Mocha" />
-                <f:selectItem itemValue="Buena Vista" itemLabel="Coffee3 - Buena Vista" />
-            </h:selectOneMenu>
             <p:separator />
 
 
