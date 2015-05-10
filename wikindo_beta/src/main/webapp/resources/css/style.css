@@ -56,3 +56,36 @@ form[role=login] > div {
     color: #fff;
 }
 /*LOGIN*/
+
+.footer-top{
+    width: 100%;
+    height: 200px;
+}
+.footer-button{
+    width: 100%;
+    height: 70px;
+    padding-right: 100px;
+}
+
+.footer-no-phone{
+    float: left;
+    margin-left: 80px;
+    margin-top: 10px;
+    color: white;
+}
+.blue{
+    background: gray;
+}
+.link1{
+    margin-left: 310px;
+}
+h5{
+
+}
+.footer-buttom{
+    bottom: 0px;
+    text-align: center;
+    margin: 0 auto;
+    float: none;
+    height: 40px;
+}
