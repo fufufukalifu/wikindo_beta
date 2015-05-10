@@ -28,22 +28,22 @@ import org.primefaces.event.FlowEvent;
 @ManagedBean
 @ViewScoped
 public class ControllerOrganisasi implements Serializable {
-
+    
     private Organisasi organisasi = new Organisasi();
     private User user = new User();
-
+    
     private int jumlahOrganisasi;
     private int jumlahMisi;
     private boolean skip;
-
+    
     public Organisasi getOrganisasi() {
         return organisasi;
     }
-
+    
     public void setOrganisasi(Organisasi organisasi) {
         this.organisasi = organisasi;
     }
-
+    
     public int countOrganisasi() throws SQLException {
         Connection con = KoneksiPostgre.getConnection();
         PreparedStatement pst = null;
@@ -56,38 +56,38 @@ public class ControllerOrganisasi implements Serializable {
         }
         return jumlahOrganisasi;
     }
-
+    
     public List<Organisasi> getListOrganisasi() throws SQLException {
         Connection con = KoneksiPostgre.getConnection();
         PreparedStatement pst = null;
         ResultSet rs = null;
         List<Organisasi> listOrganisasi;
-        String sql = "SELECT * \n"
-                + "FROM organisasi,visi, misi";
+        String sql = "SELECT * FROM ORGANISASI";
         pst = con.prepareStatement(sql);
         rs = pst.executeQuery();
         listOrganisasi = new ArrayList<>();
         while (rs.next()) {
             Organisasi organisasi = new Organisasi();
             organisasi.setNamaOrganisasi(rs.getString("nama_organisasi"));
-            organisasi.setVisi(rs.getString("isi_visi"));
-            organisasi.setMisi(rs.getString("isi_misi"));
+            organisasi.setCaption(rs.getString("caption"));
+            organisasi.setAlamatWebsite(rs.getString("alamat_website"));
+            organisasi.setDeskripsi(rs.getString("deskripsi"));
             listOrganisasi.add(organisasi);
         }
         return listOrganisasi;
     }
-
+    
     public String getIdOrganisasi() throws SQLException {
         String idOrganisasi;
         int tahun = Calendar.getInstance().get(Calendar.YEAR);
         String tahunString = String.valueOf(tahun);
-
+        
         idOrganisasi = "2a" + new ControllerOrganisasi().countOrganisasi();
-
+        
         return idOrganisasi;
-
+        
     }
-
+    
     public int countVisi() throws SQLException {
         Connection con = KoneksiPostgre.getConnection();
         PreparedStatement pst = null;
@@ -100,18 +100,18 @@ public class ControllerOrganisasi implements Serializable {
         }
         return jumlahMisi;
     }
-
+    
     public String getVisi() throws SQLException {
         String idVisi;
         int tahun = Calendar.getInstance().get(Calendar.YEAR);
         String tahunString = String.valueOf(tahun);
-
+        
         idVisi = "a1" + new ControllerOrganisasi().countVisi();
-
+        
         return idVisi;
-
+        
     }
-
+    
     public int countMisi() throws SQLException {
         Connection con = KoneksiPostgre.getConnection();
         PreparedStatement pst = null;
@@ -124,18 +124,18 @@ public class ControllerOrganisasi implements Serializable {
         }
         return jumlahMisi;
     }
-
+    
     public String getMisi() throws SQLException {
         String idMisi;
         int tahun = Calendar.getInstance().get(Calendar.YEAR);
         String tahunString = String.valueOf(tahun);
-
+        
         idMisi = "a2" + new ControllerOrganisasi().countMisi();
-
+        
         return idMisi;
-
+        
     }
-
+    
     public void saveFormOrganisasi() throws SQLException {
         String tampungIdOrganisasi = new ControllerOrganisasi().getIdOrganisasi();
         Connection con = KoneksiPostgre.getConnection();
@@ -143,7 +143,7 @@ public class ControllerOrganisasi implements Serializable {
         PreparedStatement stat;
         stat = con.prepareStatement(
                 "Insert into organisasi values(?,?,?,?,?,?,?,?,?,?,?)");
-
+        
         stat.setString(1, tampungIdOrganisasi);
         stat.setString(2, user.getIdUser());
         stat.setString(3, organisasi.getNamaOrganisasi());
@@ -157,17 +157,17 @@ public class ControllerOrganisasi implements Serializable {
         stat.setString(11, "0");
         stat.executeUpdate();
         stat.close();
-
+        
         stat = con.prepareStatement(
                 "Insert into visi values(?,?,?,?)");
         stat.setString(1, new ControllerOrganisasi().getVisi());
         stat.setString(2, tampungIdOrganisasi);//id organisasi
         stat.setString(3, "0");
         stat.setString(4, organisasi.getVisi());
-
+        
         stat.executeUpdate();
         stat.close();
-
+        
         stat = con.prepareStatement(
                 "Insert into misi values(?,?,?,?)");
         stat.setString(1, new ControllerOrganisasi().getMisi());
@@ -177,15 +177,15 @@ public class ControllerOrganisasi implements Serializable {
         stat.executeUpdate();
         stat.close();
     }
-
+    
     public boolean isSkip() {
         return skip;
     }
-
+    
     public void setSkip(boolean skip) {
         this.skip = skip;
     }
-
+    
     public String onFlowProcess(FlowEvent event) {
         if (skip) {
             skip = false;   //reset in case user goes back
@@ -194,5 +194,5 @@ public class ControllerOrganisasi implements Serializable {
             return event.getNewStep();
         }
     }
-
+    
 }

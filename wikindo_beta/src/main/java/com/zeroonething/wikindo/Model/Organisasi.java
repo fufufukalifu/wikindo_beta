@@ -3,9 +3,9 @@ package com.zeroonething.wikindo.Model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Organisasi implements Serializable{
+public class Organisasi implements Serializable {
 
-   
+    private String deskripsi;
     private String namaOrganisasi;
     private Date tahunDidirikan;
     private String dasarHukum;
@@ -14,7 +14,27 @@ public class Organisasi implements Serializable{
     private String alamatWebsite;
     private String jenisOrganisasi;
     private String dasarHukumPendirian;
+    private String caption;
 
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
+
+    public String getCaption() {
+        return "../../resources/images/organisasi/" + caption;
+    }
+
+    public String getNamaOrganisasi() {
+        return namaOrganisasi;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
+    }
     private Article article;
     private String misi;
     private String visi;
@@ -23,8 +43,10 @@ public class Organisasi implements Serializable{
         super();
     }
 
-    public String getNamaOrganisasi() {
-        return namaOrganisasi;
+    public String getPreviewDeskripsi() {
+        String deskripsi_temp = "";
+        deskripsi_temp = deskripsi.substring(0, 100);
+        return deskripsi_temp;
     }
 
     public void setNamaOrganisasi(String namaOrganisasi) {
@@ -110,9 +132,5 @@ public class Organisasi implements Serializable{
     public void setVisi(String visi) {
         this.visi = visi;
     }
-
-    
-
-   
 
 }
