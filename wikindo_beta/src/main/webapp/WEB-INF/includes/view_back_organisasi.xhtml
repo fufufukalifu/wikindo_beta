@@ -13,49 +13,50 @@ and open the template in the editor.
         <title>Wiki Indonesia | Organisasi</title>
     </h:head>
     <f:view>
-    <body>
-        <h:panelGrid columns="2" cellpadding="5">
-        <h:form>
-            <p:dataTable value="#{controllerOrganisasi.organisasiBack}" var="ar" paginator="true">
-                <f:facet name="header">
-                    Organisasi
-                </f:facet>                
-                <p:column headerText="Nama Organisasi">
-                    <h:outputText value="#{ar.namaOrganisasi}" style="display:inline-block"/>
-                </p:column>
+        <body>
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:form>
+                    <p:dataTable value="#{controllerOrganisasi.organisasiBack}" var="ar" paginator="true">
+                        <f:facet name="header">
+                            Organisasi
+                        </f:facet>                
+                        <p:column headerText="Nama Organisasi">
+                            <h:outputText value="#{ar.namaOrganisasi}" style="display:inline-block"/>
+                        </p:column>
 
-                <p:column headerText="Website">
-                    <h:outputText value="#{ar.alamatWebsite}"/>
-                </p:column>
-                
-                <p:column width="220">
-                    <p:growl id="growl" showDetail="true"/>
-                    <p:commandButton value="Edit" onclick="PF('editRoleDialog').show()" update="dialogForm"/>
-                    <p:growl id="message" showDetail="true" />
-                    <p:commandButton value="Delete" actionListener="#{controllerOrganisasi.deleteOrganisasi(ar.namaOrganisasi)}" update="message">
-                        <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
-                    </p:commandButton>
-                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
-                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                    </p:confirmDialog>  
-                     
-                </p:column>
-                <p:dialog header="Edit Article" widgetVar="editRoleDialog">
-                        <p:panelGrid columns="2" id="dialogForm">
-                            <h:outputText value="Nama Organisasi" id="display"/>
-                            <h:inputText  value="#{ar.namaOrganisasi}"/>
-                            <h:outputText value="Website" />
-                            <h:inputText  value="#{ar.alamatWebsite}"/>
-                            <f:facet name="footer">
-                                <p:commandButton value="Submit" actionListener="#{controllerOrganisasi.editOrganisasi()}"/>
-                            </f:facet>
-                        </p:panelGrid>
-                    </p:dialog> 
-            </p:dataTable> 
-        </h:form>
-        </h:panelGrid>
-        
-    </body>
+                        <p:column headerText="Website">
+                            <h:outputText value="#{ar.alamatWebsite}"/>
+                        </p:column>
+
+                        <p:column width="220">
+                            <p:growl id="growl" showDetail="true"/>
+                            <p:commandButton value="Edit" onclick="PF('editRoleDialog').show()" update="dialogForm"/>
+                            <p:growl id="message" showDetail="true" />
+                            <p:commandButton value="Delete" actionListener="#{controllerOrganisasi.deleteOrganisasi(ar.namaOrganisasi)}" update="message">
+                                <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>  
+
+                            <p:dialog header="Edit Article" widgetVar="editRoleDialog" width="50%">
+                                <p:panelGrid columns="2" id="dialogForm">
+                                    <h:outputText value="Nama Organisasi" id="display"/>
+                                    <h:inputText  value="#{ar.namaOrganisasi}"/>
+                                    <h:outputText value="Website" />
+                                    <h:inputText  value="#{ar.alamatWebsite}"/>
+                                    <f:facet name="footer">
+                                        <p:commandButton value="Submit" actionListener="#{controllerOrganisasi.editOrganisasi()}"/>
+                                    </f:facet>
+                                </p:panelGrid>
+                            </p:dialog> 
+                        </p:column>
+
+                    </p:dataTable> 
+                </h:form>
+            </h:panelGrid>
+
+        </body>
     </f:view>
 </html>

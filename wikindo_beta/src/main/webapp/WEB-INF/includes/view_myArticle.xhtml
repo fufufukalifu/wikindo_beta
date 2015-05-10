@@ -20,7 +20,7 @@
                 <p:column width="220">
                     <p:growl id="growl" showDetail="true"/>
                     <p:commandButton value="Edit" onclick="PF('editRoleDialog').show()" update="dialogForm"/>
-                    <p:growl id="message" showDetail="true" />
+                    <p:growl id="message" showDetail="true"/>
                     <p:commandButton value="Delete" actionListener="#{controllerArticle.delete(ar.idArticle)}" update="message">
                         <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
                     </p:commandButton>
@@ -28,13 +28,13 @@
                         <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                         <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                     </p:confirmDialog>  
-                    <p:dialog header="Edit Article" widgetVar="editRoleDialog">
-                        <p:panelGrid columns="2" id="dialogForm">
+                    <p:dialog header="Edit Article" widgetVar="editRoleDialog" width="70%">
+                        <p:panelGrid columns="1" id="dialogForm">
                             <h:outputText value="Judul" id="display"/>
-                            <h:outputText value="#{ar.judulArticle}"/>
                             <h:inputText  value="#{ar.judulArticle}"/>
-                            <h:outputText value="Judul" />
-                            <h:inputText  value="#{ar.isiArticle}"/>
+                           
+                            <p:editor id="editor"  widgetVar="editorWidget" value="#{ar.isiArticle}" width="600" />
+                            <h:outputText value="Caption"/>
                             <h:inputText value="#{ar.caption}"/>
                             <f:facet name="footer">
                                 <p:commandButton value="Submit" actionListener="#{controllerArticle.edit()}"/>
