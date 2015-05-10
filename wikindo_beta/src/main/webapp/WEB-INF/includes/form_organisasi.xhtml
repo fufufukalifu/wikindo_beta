@@ -6,96 +6,103 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <style>
+            .organisasi{
+                width: 500px;
+                margin: 0 auto;
+            }          
+        </style>
     </h:head>
     <h:body>
-        <h:form>
-            <p:growl id="growl" sticky="true" showDetail="true"/>
+        <div class="container span8 organisasi">
+            <h:form>
+                <p:growl id="growl" sticky="true" showDetail="true"/>
 
-            <p:wizard flowListener="#{controllerOrganisasi.onFlowProcess}">
+                <p:wizard flowListener="#{controllerOrganisasi.onFlowProcess}">
 
-                <p:tab id="Data_tokoh" title="Data Organisasi">
-                    <p:panel header="Personal Details">
-                        <p:messages />
-                        <!--Inputan untuk tabel Informasi-->
-                        <h:panelGrid columns="2" columnClasses="label, value">
-                            <h:outputText value="Nama Organisasi : "/>
-                            <p:inputText value="#{controllerOrganisasi.organisasi.namaOrganisasi}"/>
+                    <p:tab id="Data_tokoh" title="Data Organisasi">
+                        <p:panel header="Personal Details">
+                            <p:messages />
+                            <!--Inputan untuk tabel Informasi-->
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="Nama Organisasi : "/>
+                                <p:inputText value="#{controllerOrganisasi.organisasi.namaOrganisasi}"/>
 
-                            <h:outputText value="Tanggal Didirikan : "/>
-                            <p:calendar value="#{controllerOrganisasi.organisasi.tahunDidirikan}" pattern="yyyy-dd-MM" effect="fold"/>
+                                <h:outputText value="Tanggal Didirikan : "/>
+                                <p:calendar value="#{controllerOrganisasi.organisasi.tahunDidirikan}" pattern="yyyy-dd-MM" effect="fold"/>
 
-                            <h:outputText value="Dasar Hukum :"/>
-                            <p:inputText value="#{controllerOrganisasi.organisasi.dasarHukum}"/>
+                                <h:outputText value="Dasar Hukum :"/>
+                                <p:inputText value="#{controllerOrganisasi.organisasi.dasarHukum}"/>
 
-                            <h:outputText value="Nama Pimpinan : "/>
-                            <p:inputText value="#{controllerOrganisasi.organisasi.namaPimpinan}"/>
+                                <h:outputText value="Nama Pimpinan : "/>
+                                <p:inputText value="#{controllerOrganisasi.organisasi.namaPimpinan}"/>
 
-                            <h:outputText value="Alamat Kantor Pusat : "/>
-                            <p:inputText value="#{controllerOrganisasi.organisasi.alamatKantorPusat}"/>
+                                <h:outputText value="Alamat Kantor Pusat : "/>
+                                <p:inputText value="#{controllerOrganisasi.organisasi.alamatKantorPusat}"/>
 
-                            <h:outputText value="Alamat Website : "/>
-                            <p:inputText value="#{controllerOrganisasi.organisasi.alamatWebsite}"/>
+                                <h:outputText value="Alamat Website : "/>
+                                <p:inputText value="#{controllerOrganisasi.organisasi.alamatWebsite}"/>
 
-                            <h:outputText value="Jenis Organisasi : "/>
-                            <p:inputText value="#{controllerOrganisasi.organisasi.jenisOrganisasi}"/>
+                                <h:outputText value="Jenis Organisasi : "/>
+                                <p:inputText value="#{controllerOrganisasi.organisasi.jenisOrganisasi}"/>
 
-                            <h:outputText value="Dasar Hukum Pendirian : "/>
-                            <p:inputText value="#{controllerOrganisasi.organisasi.dasarHukumPendirian}"/>
-
-
-                            <h:outputText value="Visi"/>
-                            <p:inputText value="#{controllerOrganisasi.organisasi.visi}"/>
-
-                            <h:outputText value="Misi"/>
-                            <p:inputTextarea value="#{controllerOrganisasi.organisasi.misi}"/>
-
-                        </h:panelGrid>
-                    </p:panel>
-                </p:tab>
+                                <h:outputText value="Dasar Hukum Pendirian : "/>
+                                <p:inputText value="#{controllerOrganisasi.organisasi.dasarHukumPendirian}"/>
 
 
-                <p:tab id="confirm" title="Konfirmasi">
-                    <p:panel header="Personal Details">
-                        <p:messages />
-                        <h:panelGrid columns="2" columnClasses="label, value">
-                            <h:outputText value="Nama Organisasi : "/>
-                            <h:outputText value="#{controllerOrganisasi.organisasi.namaOrganisasi}"/>
+                                <h:outputText value="Visi"/>
+                                <p:inputText value="#{controllerOrganisasi.organisasi.visi}"/>
 
-                            <h:outputText value="Tanggal Didirikan : "/>
-                            <h:outputText value="#{controllerOrganisasi.organisasi.tahunDidirikan}"/>
+                                <h:outputText value="Misi"/>
+                                <p:inputTextarea value="#{controllerOrganisasi.organisasi.misi}"/>
 
-                            <h:outputText value="Dasar Hukum :"/>
-                            <h:outputText value="#{controllerOrganisasi.organisasi.dasarHukum}"/>
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
 
-                            <h:outputText value="Nama Pimpinan : "/>
-                            <h:outputText value="#{controllerOrganisasi.organisasi.namaPimpinan}"/>
 
-                            <h:outputText value="Alamat Kantor Pusat : "/>
-                            <h:outputText value="#{controllerOrganisasi.organisasi.alamatKantorPusat}"/>
+                    <p:tab id="confirm" title="Konfirmasi">
+                        <p:panel header="Personal Details">
+                            <p:messages />
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="Nama Organisasi : "/>
+                                <h:outputText value="#{controllerOrganisasi.organisasi.namaOrganisasi}"/>
 
-                            <h:outputText value="Alamat Website : "/>
-                            <h:outputText value="#{controllerOrganisasi.organisasi.alamatWebsite}"/>
+                                <h:outputText value="Tanggal Didirikan : "/>
+                                <h:outputText value="#{controllerOrganisasi.organisasi.tahunDidirikan}"/>
 
-                            <h:outputText value="Jenis Organisasi : "/>
-                            <h:outputText value="#{controllerOrganisasi.organisasi.jenisOrganisasi}"/>
+                                <h:outputText value="Dasar Hukum :"/>
+                                <h:outputText value="#{controllerOrganisasi.organisasi.dasarHukum}"/>
 
-                            <h:outputText value="Dasar Hukum Pendirian : "/>
-                            <h:outputText value="#{controllerOrganisasi.organisasi.dasarHukumPendirian}"/>
+                                <h:outputText value="Nama Pimpinan : "/>
+                                <h:outputText value="#{controllerOrganisasi.organisasi.namaPimpinan}"/>
 
-                            <h:outputText value="Visi"/>
-                            <h:outputText value="#{controllerOrganisasi.organisasi.visi}"/>
+                                <h:outputText value="Alamat Kantor Pusat : "/>
+                                <h:outputText value="#{controllerOrganisasi.organisasi.alamatKantorPusat}"/>
 
-                            <h:outputText value="Misi"/>
-                            <h:outputText value="#{controllerOrganisasi.organisasi.misi}"/>
-                        </h:panelGrid>  
+                                <h:outputText value="Alamat Website : "/>
+                                <h:outputText value="#{controllerOrganisasi.organisasi.alamatWebsite}"/>
 
-                        <p:commandButton value="Submit" actionListener="#{controllerOrganisasi.saveFormOrganisasi()}" update="growl" process="@this"/>
+                                <h:outputText value="Jenis Organisasi : "/>
+                                <h:outputText value="#{controllerOrganisasi.organisasi.jenisOrganisasi}"/>
 
-                    </p:panel>
-                </p:tab>
-            </p:wizard>
+                                <h:outputText value="Dasar Hukum Pendirian : "/>
+                                <h:outputText value="#{controllerOrganisasi.organisasi.dasarHukumPendirian}"/>
 
-        </h:form>
+                                <h:outputText value="Visi"/>
+                                <h:outputText value="#{controllerOrganisasi.organisasi.visi}"/>
+
+                                <h:outputText value="Misi"/>
+                                <h:outputText value="#{controllerOrganisasi.organisasi.misi}"/>
+                            </h:panelGrid>  
+
+                            <p:commandButton value="Submit" actionListener="#{controllerOrganisasi.saveFormOrganisasi()}" update="growl" process="@this"/>
+
+                        </p:panel>
+                    </p:tab>
+                </p:wizard>
+            </h:form>
+        </div>
     </h:body>
 </html>
 
