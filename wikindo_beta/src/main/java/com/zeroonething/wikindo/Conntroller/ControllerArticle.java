@@ -52,9 +52,9 @@ public class ControllerArticle implements Serializable {
         Connection con = KoneksiPostgre.getConnection();
 
         PreparedStatement stat = con.prepareStatement(
-                "Insert into article values(?,?,?,?,?,?,?,?)");
+                "Insert into article values(?,?,?,?,?,?,?,?,?,?)");
 
-        stat.setString(1, "a18");
+        stat.setString(1, article.getIdArticle());
         stat.setString(2, null);
         stat.setString(3, null);
         stat.setString(4, null);
@@ -62,6 +62,8 @@ public class ControllerArticle implements Serializable {
         stat.setString(6, article.getIsiArticle());
         stat.setDate(7, null);
         stat.setDate(8, null);
+        stat.setString(9, "0");
+        stat.setString(10, null);
         stat.executeUpdate();
 
     }

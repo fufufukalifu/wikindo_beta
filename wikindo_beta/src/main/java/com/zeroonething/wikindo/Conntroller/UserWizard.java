@@ -120,6 +120,47 @@ public class UserWizard implements Serializable {
 
     }
 
+    //save dewan redaksi
+     public void saveDewanRdaksi() {
+
+        try {
+
+            Connection con = KoneksiPostgre.getConnection();
+
+            PreparedStatement stat = con.prepareStatement(
+                    "Insert into orang values(?,?,?,?,?,?,?,?,?,?)");
+
+            stat.setString(1, new UserWizard().getIdKOntributor());
+            stat.setString(2, user.getNoIdentitas());
+            stat.setString(3, user.getJenisIdentitas());
+            stat.setString(4, user.getEmail());
+            stat.setString(5, user.getPhone());
+            stat.setString(6, user.getCaption());
+            stat.setString(7, user.getNamaLengkap());
+            stat.setDate(8, (Date) user.getTanggalLahir());
+            stat.setString(9, user.getTempatLahir());
+            stat.setString(10, user.getJenisKelamin());
+            stat.executeUpdate();
+            System.out.println("hai" + user.getIdUser());
+
+            stat.close();
+
+            stat = con.prepareStatement(
+                    "Insert into users values(?,?,?,?,?)");
+
+            stat.setString(1, new UserWizard().getIdKOntributor());
+            stat.setString(2, user.getUsername());
+            stat.setString(3, user.getPassword());
+            stat.setString(4, "0");
+            stat.setString(5, "Moderator");
+            stat.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("Error in saveOrang() -->" + ex.getMessage());
+
+        }
+
+    }
     public boolean isSkip() {
         return skip;
     }
